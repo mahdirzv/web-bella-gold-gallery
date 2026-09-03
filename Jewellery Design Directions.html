@@ -1,0 +1,1893 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'self' 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src 'self' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src 'self' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Jewellery Design Directions</title>
+<style>:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget > :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress {
+  display: flex;
+  height: 6px;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type="file"]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html>body{padding:0}</style>
+</head>
+<body>
+<div id="jewellery-design-directions" data-direction="vintage" data-theme="light" data-device="desktop" dir="ltr" lang="en">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&family=Vazirmatn:wght@400;500&display=swap');
+
+    #jewellery-design-directions {
+      --jd-font-vintage-display: "Cormorant Garamond", Georgia, serif;
+      --jd-font-vintage-fa: "Noto Naskh Arabic", serif;
+      --jd-font-modern-display: "Instrument Serif", Georgia, serif;
+      --jd-font-modern-body: "Manrope", Arial, sans-serif;
+      --jd-font-modern-fa: "Vazirmatn", Arial, sans-serif;
+      width: 100%;
+      color: var(--jd-text);
+      color-scheme: light;
+    }
+    #jewellery-design-directions[data-direction="vintage"][data-theme="light"] {
+      --jd-bg: #F3EBDD;
+      --jd-surface: #FBF7EF;
+      --jd-surface-raised: #E9DDCA;
+      --jd-text: #241A14;
+      --jd-muted: #6F625A;
+      --jd-line: #B9A990;
+      --jd-accent: #7A5A23;
+      --jd-on-accent: #FFF8EB;
+      --jd-detail: #6A272A;
+      --jd-image: #D7C3A7;
+      --jd-display: var(--jd-font-vintage-display);
+      --jd-body: Georgia, serif;
+      --jd-fa: var(--jd-font-vintage-fa);
+      --jd-section-space: 72px;
+      --jd-page-pad: 42px;
+      --jd-media-radius: 0px;
+      --jd-control-radius: 0px;
+      --jd-border-width: 1px;
+      --jd-letter-space: .12em;
+      color-scheme: light;
+    }
+    #jewellery-design-directions[data-direction="vintage"][data-theme="dark"] {
+      --jd-bg: #15100D;
+      --jd-surface: #1D1713;
+      --jd-surface-raised: #2A211B;
+      --jd-text: #F2E7D8;
+      --jd-muted: #B9A99B;
+      --jd-line: #4A3C31;
+      --jd-accent: #D2AE64;
+      --jd-on-accent: #17100B;
+      --jd-detail: #9C5654;
+      --jd-image: #332820;
+      --jd-display: var(--jd-font-vintage-display);
+      --jd-body: Georgia, serif;
+      --jd-fa: var(--jd-font-vintage-fa);
+      --jd-section-space: 72px;
+      --jd-page-pad: 42px;
+      --jd-media-radius: 0px;
+      --jd-control-radius: 0px;
+      --jd-border-width: 1px;
+      --jd-letter-space: .12em;
+      color-scheme: dark;
+    }
+    #jewellery-design-directions[data-direction="modern"][data-theme="light"] {
+      --jd-bg: #F1F3EF;
+      --jd-surface: #FAFBF8;
+      --jd-surface-raised: #E3E8E2;
+      --jd-text: #121512;
+      --jd-muted: #5E655F;
+      --jd-line: #CDD3CC;
+      --jd-accent: #365044;
+      --jd-on-accent: #F8FBF7;
+      --jd-detail: #9C7C35;
+      --jd-image: #DCE4DD;
+      --jd-display: var(--jd-font-modern-display);
+      --jd-body: var(--jd-font-modern-body);
+      --jd-fa: var(--jd-font-modern-fa);
+      --jd-section-space: 84px;
+      --jd-page-pad: 34px;
+      --jd-media-radius: 18px;
+      --jd-control-radius: 999px;
+      --jd-border-width: 1px;
+      --jd-letter-space: .08em;
+      color-scheme: light;
+    }
+    #jewellery-design-directions[data-direction="modern"][data-theme="dark"] {
+      --jd-bg: #0B0E0C;
+      --jd-surface: #121713;
+      --jd-surface-raised: #1B221D;
+      --jd-text: #F0F4EF;
+      --jd-muted: #A2AAA4;
+      --jd-line: #303932;
+      --jd-accent: #A9C3B4;
+      --jd-on-accent: #0B0E0C;
+      --jd-detail: #D2B36B;
+      --jd-image: #1A241E;
+      --jd-display: var(--jd-font-modern-display);
+      --jd-body: var(--jd-font-modern-body);
+      --jd-fa: var(--jd-font-modern-fa);
+      --jd-section-space: 84px;
+      --jd-page-pad: 34px;
+      --jd-media-radius: 18px;
+      --jd-control-radius: 999px;
+      --jd-border-width: 1px;
+      --jd-letter-space: .08em;
+      color-scheme: dark;
+    }
+    #jewellery-design-directions * { box-sizing: border-box; }
+    #jewellery-design-directions button { font: inherit; }
+    #jewellery-design-directions .review-bar {
+      display: grid;
+      grid-template-columns: minmax(300px, 1.7fr) minmax(245px, 1.2fr) minmax(145px, .8fr) minmax(120px, .7fr) minmax(80px, .5fr);
+      gap: 12px;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding: 12px;
+      font-family: var(--jd-font-modern-body);
+      color: var(--jd-text);
+      background: var(--jd-surface);
+      border: 1px solid var(--jd-line);
+    }
+    #jewellery-design-directions .review-group { display: flex; flex-direction: column; gap: 5px; }
+    #jewellery-design-directions .review-label { font-size: 11px; color: var(--jd-muted); }
+    #jewellery-design-directions .review-actions { display: flex; flex-wrap: wrap; gap: 4px; }
+    #jewellery-design-directions .review-actions button {
+      min-height: 44px;
+      padding: 8px 11px;
+      border: 1px solid var(--jd-line);
+      background: var(--jd-surface);
+      color: var(--jd-text);
+      cursor: pointer;
+    }
+    #jewellery-design-directions .review-actions button[aria-pressed="true"],
+    #jewellery-design-directions .review-actions button[aria-selected="true"] {
+      border-color: var(--jd-accent);
+      background: var(--jd-accent);
+      color: var(--jd-on-accent);
+    }
+    #jewellery-design-directions .review-panel { display: none; }
+    #jewellery-design-directions .review-panel.is-active { display: block; }
+    #jewellery-design-directions .site-stage {
+      background: var(--jd-bg);
+      padding: 16px;
+      transition: background-color 240ms ease;
+    }
+    #jewellery-design-directions .website {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--jd-surface);
+      color: var(--jd-text);
+      overflow: hidden;
+      font-family: var(--jd-body);
+      border: var(--jd-border-width) solid var(--jd-line);
+      transition: max-width 280ms ease, background-color 240ms ease, color 240ms ease;
+    }
+    #jewellery-design-directions[dir="rtl"] .website { font-family: var(--jd-fa); }
+    #jewellery-design-directions[data-device="mobile"] .website { max-width: 390px; }
+    #jewellery-design-directions .announcement {
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 16px;
+      color: var(--jd-on-accent);
+      background: var(--jd-accent);
+      font-family: var(--jd-body);
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-align: center;
+    }
+    #jewellery-design-directions[dir="rtl"] .announcement { font-family: var(--jd-fa); letter-spacing: 0; }
+    #jewellery-design-directions .site-header {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: 150px 1fr 150px;
+      align-items: center;
+      gap: 18px;
+      padding: 0 var(--jd-page-pad);
+      color: var(--jd-text);
+      background: var(--jd-surface);
+      position: relative;
+      z-index: 4;
+    }
+    #jewellery-design-directions .site-header::after {
+      content: "";
+      position: absolute;
+      left: var(--jd-page-pad);
+      right: var(--jd-page-pad);
+      bottom: 0;
+      border-bottom: 1px solid var(--jd-line);
+    }
+    #jewellery-design-directions[data-direction="vintage"] .site-header::before {
+      content: "";
+      position: absolute;
+      left: var(--jd-page-pad);
+      right: var(--jd-page-pad);
+      bottom: 4px;
+      border-bottom: 1px solid var(--jd-line);
+    }
+    #jewellery-design-directions .brand {
+      font-family: var(--jd-display);
+      font-size: 29px;
+      letter-spacing: -.03em;
+      white-space: nowrap;
+    }
+    #jewellery-design-directions[dir="rtl"] .brand { font-family: var(--jd-fa); }
+    #jewellery-design-directions[data-direction="vintage"] .brand::before {
+      content: "✦";
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-inline-end: 8px;
+      border: 1px solid var(--jd-line);
+      border-radius: 50%;
+      color: var(--jd-accent);
+      font-size: 12px;
+      vertical-align: middle;
+    }
+    #jewellery-design-directions[data-direction="modern"] .brand { font-family: var(--jd-font-modern-body); font-size: 20px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+    #jewellery-design-directions .main-nav { display: flex; justify-content: center; gap: 24px; font-family: var(--jd-body); font-size: 11px; letter-spacing: var(--jd-letter-space); text-transform: uppercase; }
+    #jewellery-design-directions[dir="rtl"] .main-nav { font-family: var(--jd-fa); letter-spacing: 0; }
+    #jewellery-design-directions .site-tools { display: flex; justify-content: end; gap: 13px; font-size: 11px; color: var(--jd-muted); }
+    #jewellery-design-directions .mobile-menu { display: none; }
+    #jewellery-design-directions .hero {
+      min-height: 520px;
+      padding: var(--jd-page-pad);
+      position: relative;
+      display: grid;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    #jewellery-design-directions[data-direction="vintage"] .hero { grid-template-columns: .82fr 1.18fr; gap: 34px; }
+    #jewellery-design-directions[data-direction="modern"] .hero { grid-template-columns: 1fr; min-height: 570px; padding: 18px; }
+    #jewellery-design-directions .hero-copy { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; }
+    #jewellery-design-directions[data-direction="vintage"] .hero-copy { padding: 32px 12px 32px 10px; }
+    #jewellery-design-directions[data-direction="modern"] .hero-copy {
+      width: min(460px, 46%);
+      align-self: end;
+      margin: 0 0 28px 24px;
+      padding: 28px;
+      background: color-mix(in srgb, var(--jd-surface) 92%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    #jewellery-design-directions[dir="rtl"][data-direction="modern"] .hero-copy { margin: 0 24px 28px 0; }
+    #jewellery-design-directions .eyebrow {
+      color: var(--jd-accent);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    #jewellery-design-directions[dir="rtl"] .eyebrow { letter-spacing: 0; }
+    #jewellery-design-directions .hero h1,
+    #jewellery-design-directions .story-copy h2,
+    #jewellery-design-directions .craft-copy h2 {
+      font-family: var(--jd-display);
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: -.035em;
+    }
+    #jewellery-design-directions[dir="rtl"] .hero h1,
+    #jewellery-design-directions[dir="rtl"] .story-copy h2,
+    #jewellery-design-directions[dir="rtl"] .craft-copy h2 { font-family: var(--jd-fa); letter-spacing: 0; }
+    #jewellery-design-directions .hero h1 { font-size: clamp(48px, 7vw, 88px); line-height: .88; }
+    #jewellery-design-directions .hero-copy p { color: var(--jd-muted); max-width: 34em; margin: 22px 0 0; font-size: 14px; line-height: 1.65; }
+    #jewellery-design-directions .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 17px; margin-top: 26px; }
+    #jewellery-design-directions .primary-action {
+      border: 1px solid var(--jd-accent);
+      border-radius: var(--jd-control-radius);
+      background: var(--jd-accent);
+      color: var(--jd-on-accent);
+      padding: 12px 18px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--jd-body);
+      font-size: 11px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    #jewellery-design-directions[dir="rtl"] .primary-action { font-family: var(--jd-fa); letter-spacing: 0; }
+    #jewellery-design-directions .text-action { min-height: 44px; display: inline-flex; align-items: center; padding-bottom: 5px; border-bottom: 1px solid var(--jd-line); color: var(--jd-text); font-size: 12px; text-decoration: none; }
+    #jewellery-design-directions .campaign-art {
+      min-height: 430px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--jd-media-radius);
+      background:
+        radial-gradient(circle at 62% 36%, color-mix(in srgb, var(--jd-detail) 24%, transparent) 0 16%, transparent 16.5%),
+        linear-gradient(135deg, var(--jd-image), var(--jd-surface-raised));
+    }
+    #jewellery-design-directions[data-direction="vintage"] .campaign-art { border: 1px solid var(--jd-line); outline: 1px solid var(--jd-line); outline-offset: -10px; }
+    #jewellery-design-directions[data-direction="modern"] .campaign-art { position: absolute; inset: 18px; }
+    #jewellery-design-directions .portrait-shape {
+      position: absolute;
+      width: 44%;
+      height: 78%;
+      right: 13%;
+      bottom: -8%;
+      border-radius: 50% 50% 13% 13%;
+      background: color-mix(in srgb, var(--jd-text) 22%, var(--jd-image));
+      transform: rotate(-4deg);
+    }
+    #jewellery-design-directions[dir="rtl"] .portrait-shape { right: auto; left: 13%; transform: rotate(4deg); }
+    #jewellery-design-directions .necklace-shape {
+      position: absolute;
+      width: 24%;
+      aspect-ratio: 1;
+      border: 3px solid var(--jd-detail);
+      border-top-color: transparent;
+      border-radius: 50%;
+      right: 23%;
+      top: 29%;
+      transform: rotate(8deg);
+    }
+    #jewellery-design-directions[dir="rtl"] .necklace-shape { right: auto; left: 23%; transform: rotate(-8deg); }
+    #jewellery-design-directions .necklace-shape::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 21px;
+      left: calc(50% - 7px);
+      bottom: -12px;
+      border: 2px solid var(--jd-accent);
+      border-radius: 50% 50% 45% 45%;
+      background: var(--jd-surface-raised);
+    }
+    #jewellery-design-directions .art-caption { position: absolute; left: 20px; bottom: 18px; max-width: calc(100% - 40px); color: var(--jd-on-accent); background: color-mix(in srgb, var(--jd-text) 78%, transparent); padding: 7px 9px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    #jewellery-design-directions[dir="rtl"] .art-caption { left: auto; right: 20px; letter-spacing: 0; }
+    #jewellery-design-directions[data-direction="modern"] .art-caption { left: auto; right: 20px; color: var(--jd-text); background: color-mix(in srgb, var(--jd-surface) 88%, transparent); border-inline-start: 2px solid var(--jd-detail); }
+    #jewellery-design-directions[dir="rtl"][data-direction="modern"] .art-caption { right: auto; left: 20px; }
+    #jewellery-design-directions .site-section { padding: var(--jd-section-space) var(--jd-page-pad); position: relative; }
+    #jewellery-design-directions .chapter-head { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--jd-muted); }
+    #jewellery-design-directions[dir="rtl"] .chapter-head { letter-spacing: 0; }
+    #jewellery-design-directions .chapter-index { color: var(--jd-accent); }
+    #jewellery-design-directions .chapter-line { height: 1px; flex: 1; background: var(--jd-line); position: relative; }
+    #jewellery-design-directions[data-direction="vintage"] .chapter-line::after {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -52%);
+      padding: 0 8px;
+      background: var(--jd-surface);
+      color: var(--jd-accent);
+      font-size: 7px;
+    }
+    #jewellery-design-directions[data-direction="modern"] .chapter-line { background: linear-gradient(90deg, var(--jd-accent) 0 64px, var(--jd-line) 64px); }
+    #jewellery-design-directions[dir="rtl"][data-direction="modern"] .chapter-line { background: linear-gradient(-90deg, var(--jd-accent) 0 64px, var(--jd-line) 64px); }
+    #jewellery-design-directions .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    #jewellery-design-directions .category-card { color: var(--jd-text); }
+    #jewellery-design-directions .category-image { min-height: 230px; position: relative; overflow: hidden; border-radius: var(--jd-media-radius); background: var(--jd-image); }
+    #jewellery-design-directions[data-direction="vintage"] .category-image { border: 1px solid var(--jd-line); padding: 10px; background: var(--jd-surface-raised); }
+    #jewellery-design-directions[data-direction="vintage"] .category-image::before { content: ""; position: absolute; inset: 9px; border: 1px solid var(--jd-line); }
+    #jewellery-design-directions[data-direction="modern"] .category-card:nth-child(even) { transform: translateY(22px); }
+    #jewellery-design-directions .category-object { position: absolute; inset: 22%; border: 3px solid var(--jd-accent); border-radius: 50%; opacity: .9; }
+    #jewellery-design-directions .category-card:nth-child(2) .category-object { inset: 20% 43%; border-radius: 48%; }
+    #jewellery-design-directions .category-card:nth-child(2) .category-object::after { content: ""; position: absolute; width: 18px; height: 24px; border: 2px solid var(--jd-detail); border-radius: 50%; left: 50%; bottom: -18px; transform: translateX(-50%); }
+    #jewellery-design-directions .category-card:nth-child(3) .category-object { inset: 29%; border-radius: 50%; box-shadow: 34px 18px 0 -2px var(--jd-image), 34px 18px 0 1px var(--jd-accent); }
+    #jewellery-design-directions .category-card:nth-child(4) .category-object { inset: 35% 17%; border-radius: 48%; }
+    #jewellery-design-directions .category-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding-top: 12px; border-bottom: 1px solid transparent; }
+    #jewellery-design-directions[data-direction="vintage"] .category-meta { padding-bottom: 9px; border-bottom-color: var(--jd-line); font-family: var(--jd-display); font-size: 18px; }
+    #jewellery-design-directions[dir="rtl"][data-direction="vintage"] .category-meta { font-family: var(--jd-fa); }
+    #jewellery-design-directions[data-direction="modern"] .category-meta { font-family: var(--jd-body); font-size: 12px; }
+    #jewellery-design-directions .category-count { color: var(--jd-muted); font-size: 11px; }
+    #jewellery-design-directions .products-section { background: var(--jd-bg); }
+    #jewellery-design-directions .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    #jewellery-design-directions .product-card { min-width: 0; position: relative; }
+    #jewellery-design-directions .product-image { min-height: 255px; position: relative; overflow: hidden; border-radius: var(--jd-media-radius); background: var(--jd-image); }
+    #jewellery-design-directions[data-direction="vintage"] .product-image { border: 1px solid var(--jd-line); background: var(--jd-surface); box-shadow: inset 0 0 0 10px var(--jd-surface-raised); }
+    #jewellery-design-directions[data-direction="modern"] .product-image { background: linear-gradient(145deg, var(--jd-image), var(--jd-surface-raised)); }
+    #jewellery-design-directions .product-object { position: absolute; inset: 29%; border: 5px solid var(--jd-accent); border-radius: 50%; filter: drop-shadow(0 9px 8px color-mix(in srgb, var(--jd-text) 16%, transparent)); }
+    #jewellery-design-directions .product-card:nth-child(2) .product-object { inset: 20% 46% 34%; border-width: 3px; border-top-color: transparent; }
+    #jewellery-design-directions .product-card:nth-child(2) .product-object::after { content: ""; position: absolute; width: 16px; height: 20px; border: 2px solid var(--jd-detail); border-radius: 50%; left: 50%; bottom: -18px; transform: translateX(-50%); }
+    #jewellery-design-directions .product-card:nth-child(3) .product-object { inset: 36% 25%; border-radius: 45%; }
+    #jewellery-design-directions .product-card:nth-child(4) .product-object { inset: 30% 41%; border-width: 3px; box-shadow: 38px 0 0 -3px var(--jd-image), 38px 0 0 0 var(--jd-accent); }
+    #jewellery-design-directions .wishlist { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--jd-line); border-radius: 50%; background: color-mix(in srgb, var(--jd-surface) 88%, transparent); color: var(--jd-text); font-size: 11px; }
+    #jewellery-design-directions[dir="rtl"] .wishlist { right: auto; left: 10px; }
+    #jewellery-design-directions .product-copy { padding-top: 13px; font-family: var(--jd-body); }
+    #jewellery-design-directions[dir="rtl"] .product-copy { font-family: var(--jd-fa); }
+    #jewellery-design-directions .product-name { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+    #jewellery-design-directions .product-detail { color: var(--jd-muted); font-size: 11px; margin-top: 5px; }
+    #jewellery-design-directions[data-direction="vintage"] .product-copy { border-top: 3px double var(--jd-line); margin-top: 9px; }
+    #jewellery-design-directions .story-section { display: grid; grid-template-columns: 1.18fr .82fr; gap: 38px; align-items: center; }
+    #jewellery-design-directions[data-direction="modern"] .story-section { grid-template-columns: .82fr 1.18fr; }
+    #jewellery-design-directions[data-direction="modern"] .story-media { order: 2; }
+    #jewellery-design-directions .story-media { min-height: 390px; position: relative; border-radius: var(--jd-media-radius); overflow: hidden; background: linear-gradient(145deg, var(--jd-surface-raised), var(--jd-image)); }
+    #jewellery-design-directions[data-direction="vintage"] .story-media { border: 1px solid var(--jd-line); outline: 1px solid var(--jd-line); outline-offset: -12px; }
+    #jewellery-design-directions .story-media::before { content: ""; position: absolute; width: 46%; aspect-ratio: 1; border: 7px double var(--jd-accent); border-radius: 50%; left: 27%; top: 23%; }
+    #jewellery-design-directions[data-direction="modern"] .story-media::after { content: "05 / FORM"; position: absolute; right: 18px; top: 16px; color: var(--jd-muted); font-size: 9px; letter-spacing: .12em; }
+    #jewellery-design-directions .story-copy h2, #jewellery-design-directions .craft-copy h2 { font-size: clamp(38px, 5vw, 66px); line-height: .94; }
+    #jewellery-design-directions .story-copy p, #jewellery-design-directions .craft-copy p { color: var(--jd-muted); font-size: 14px; line-height: 1.7; margin: 20px 0 0; }
+    #jewellery-design-directions .intent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    #jewellery-design-directions .intent-card { min-height: 245px; position: relative; display: flex; align-items: end; padding: 20px; overflow: hidden; border-radius: var(--jd-media-radius); background: var(--jd-image); color: var(--jd-text); }
+    #jewellery-design-directions .intent-card::before { content: ""; position: absolute; width: 150px; height: 150px; border: 1px solid var(--jd-accent); border-radius: 50%; right: -22px; top: -28px; }
+    #jewellery-design-directions[dir="rtl"] .intent-card::before { right: auto; left: -22px; }
+    #jewellery-design-directions[data-direction="vintage"] .intent-card { border: 1px solid var(--jd-line); background: var(--jd-surface-raised); }
+    #jewellery-design-directions[data-direction="vintage"] .intent-card::after { content: "✦"; position: absolute; top: 18px; left: 18px; color: var(--jd-detail); }
+    #jewellery-design-directions[dir="rtl"][data-direction="vintage"] .intent-card::after { left: auto; right: 18px; }
+    #jewellery-design-directions .intent-card strong { position: relative; z-index: 1; font-family: var(--jd-display); font-weight: 400; font-size: 28px; }
+    #jewellery-design-directions[dir="rtl"] .intent-card strong { font-family: var(--jd-fa); }
+    #jewellery-design-directions .craft-section { display: grid; grid-template-columns: .85fr 1.15fr; gap: 42px; align-items: center; background: var(--jd-surface-raised); }
+    #jewellery-design-directions .craft-detail { min-height: 340px; position: relative; background: var(--jd-image); overflow: hidden; border-radius: var(--jd-media-radius); }
+    #jewellery-design-directions .craft-detail::before { content: ""; position: absolute; width: 55%; height: 55%; left: 22%; top: 22%; border: 2px solid var(--jd-accent); transform: rotate(28deg); }
+    #jewellery-design-directions .craft-detail::after { content: ""; position: absolute; width: 35%; aspect-ratio: 1; left: 33%; top: 31%; border: 8px double var(--jd-detail); border-radius: 50%; }
+    #jewellery-design-directions[data-direction="vintage"] .craft-detail { border: 1px solid var(--jd-line); }
+    #jewellery-design-directions .service-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--jd-line); border-bottom: 1px solid var(--jd-line); }
+    #jewellery-design-directions .service-item { min-height: 112px; padding: 18px; border-inline-end: 1px solid var(--jd-line); }
+    #jewellery-design-directions .service-item:last-child { border: 0; }
+    #jewellery-design-directions .service-num { color: var(--jd-accent); font-size: 11px; margin-bottom: 18px; }
+    #jewellery-design-directions .service-item strong { display: block; font-size: 13px; font-weight: 400; }
+    #jewellery-design-directions .service-item span { display: block; color: var(--jd-muted); font-size: 11px; margin-top: 7px; }
+    #jewellery-design-directions .site-footer { padding: 52px var(--jd-page-pad) 34px; background: var(--jd-bg); }
+    #jewellery-design-directions .footer-top { display: grid; grid-template-columns: 1.2fr repeat(3, .7fr); gap: 26px; }
+    #jewellery-design-directions .footer-signup h3 { font-family: var(--jd-display); font-weight: 400; font-size: 30px; margin: 0 0 14px; }
+    #jewellery-design-directions[dir="rtl"] .footer-signup h3 { font-family: var(--jd-fa); }
+    #jewellery-design-directions .email-line { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--jd-text); padding: 10px 0; color: var(--jd-muted); font-size: 12px; }
+    #jewellery-design-directions .footer-col strong { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 13px; }
+    #jewellery-design-directions[dir="rtl"] .footer-col strong { letter-spacing: 0; }
+    #jewellery-design-directions .footer-col span { display: block; color: var(--jd-muted); font-size: 11px; margin: 9px 0; }
+    #jewellery-design-directions .footer-bottom { display: flex; justify-content: space-between; gap: 18px; margin-top: 42px; padding-top: 15px; border-top: 1px solid var(--jd-line); color: var(--jd-muted); font-size: 11px; }
+
+    #jewellery-design-directions[data-device="mobile"] .announcement { min-height: 28px; }
+    #jewellery-design-directions[data-device="mobile"] .site-header { min-height: 58px; grid-template-columns: 36px 1fr 92px; padding: 0 14px; }
+    #jewellery-design-directions[data-device="mobile"] .site-header::after,
+    #jewellery-design-directions[data-device="mobile"] .site-header::before { left: 14px; right: 14px; }
+    #jewellery-design-directions[data-device="mobile"] .mobile-menu { display: block; font-size: 18px; }
+    #jewellery-design-directions[data-device="mobile"] .brand { text-align: center; font-size: 22px; }
+    #jewellery-design-directions[data-device="mobile"][data-direction="vintage"] .brand::before { display: none; }
+    #jewellery-design-directions[data-device="mobile"][data-direction="modern"] .brand { font-size: 15px; }
+    #jewellery-design-directions[data-device="mobile"] .main-nav { display: none; }
+    #jewellery-design-directions[data-device="mobile"] .site-tools { gap: 9px; font-size: 11px; }
+    #jewellery-design-directions[data-device="mobile"] .site-tools span:nth-child(2) { display: none; }
+    #jewellery-design-directions[data-device="mobile"] .hero { min-height: 0; padding: 14px; grid-template-columns: 1fr; gap: 0; display: flex; flex-direction: column; }
+    #jewellery-design-directions[data-device="mobile"] .campaign-art { position: relative; inset: auto; min-height: 420px; order: 1; border-radius: calc(var(--jd-media-radius) * .7); }
+    #jewellery-design-directions[data-device="mobile"] .hero-copy { width: auto; order: 2; margin: 0; padding: 26px 4px 18px; background: transparent; backdrop-filter: none; }
+    #jewellery-design-directions[data-device="mobile"] .hero h1 { font-size: 54px; line-height: .92; }
+    #jewellery-design-directions[data-device="mobile"] .hero-copy p { font-size: 14px; }
+    #jewellery-design-directions[data-device="mobile"] .site-section { padding: 52px 14px; }
+    #jewellery-design-directions[data-device="mobile"] .category-grid { grid-template-columns: 1fr 1fr; gap: 11px; }
+    #jewellery-design-directions[data-device="mobile"] .category-image { min-height: 190px; }
+    #jewellery-design-directions[data-device="mobile"][data-direction="modern"] .category-card:nth-child(even) { transform: none; }
+    #jewellery-design-directions[data-device="mobile"] .product-grid { grid-template-columns: repeat(4, 72%); overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: inline mandatory; scrollbar-width: thin; padding-bottom: 10px; gap: 10px; }
+    #jewellery-design-directions[data-device="mobile"] .product-card { scroll-snap-align: start; }
+    #jewellery-design-directions[data-device="mobile"] .product-image { min-height: 270px; }
+    #jewellery-design-directions[data-device="mobile"] .story-section,
+    #jewellery-design-directions[data-device="mobile"] .craft-section { grid-template-columns: 1fr; gap: 24px; }
+    #jewellery-design-directions[data-device="mobile"] .story-media { min-height: 360px; order: 0; }
+    #jewellery-design-directions[data-device="mobile"] .story-copy h2,
+    #jewellery-design-directions[data-device="mobile"] .craft-copy h2 { font-size: 44px; }
+    #jewellery-design-directions[data-device="mobile"] .intent-grid { grid-template-columns: 1fr; gap: 10px; }
+    #jewellery-design-directions[data-device="mobile"] .intent-card { min-height: 190px; }
+    #jewellery-design-directions[data-device="mobile"] .craft-detail { min-height: 300px; }
+    #jewellery-design-directions[data-device="mobile"] .service-row { grid-template-columns: 1fr 1fr; }
+    #jewellery-design-directions[data-device="mobile"] .service-item:nth-child(2) { border-inline-end: 0; }
+    #jewellery-design-directions[data-device="mobile"] .service-item:nth-child(-n+2) { border-bottom: 1px solid var(--jd-line); }
+    #jewellery-design-directions[data-device="mobile"] .site-footer { padding: 44px 14px 28px; }
+    #jewellery-design-directions[data-device="mobile"] .footer-top { grid-template-columns: 1fr 1fr; }
+    #jewellery-design-directions[data-device="mobile"] .footer-signup { grid-column: 1 / -1; }
+    #jewellery-design-directions[data-device="mobile"] .footer-bottom { flex-direction: column; }
+
+    #jewellery-design-directions .tokens-stage,
+    #jewellery-design-directions .map-stage {
+      background: var(--jd-bg);
+      color: var(--jd-text);
+      padding: 34px;
+      font-family: var(--jd-body);
+      border: 1px solid var(--jd-line);
+    }
+    #jewellery-design-directions[dir="rtl"] .tokens-stage,
+    #jewellery-design-directions[dir="rtl"] .map-stage { font-family: var(--jd-fa); }
+    #jewellery-design-directions .system-title { display: flex; justify-content: space-between; gap: 20px; align-items: end; padding-bottom: 18px; border-bottom: 1px solid var(--jd-line); }
+    #jewellery-design-directions .system-title h2 { margin: 0; font-family: var(--jd-display); font-weight: 400; font-size: 42px; }
+    #jewellery-design-directions[dir="rtl"] .system-title h2 { font-family: var(--jd-fa); }
+    #jewellery-design-directions .system-title p { margin: 0; color: var(--jd-muted); font-size: 11px; max-width: 44em; text-align: end; }
+    #jewellery-design-directions .token-section { padding: 28px 0; border-bottom: 1px solid var(--jd-line); }
+    #jewellery-design-directions .token-section:last-child { border: 0; }
+    #jewellery-design-directions .token-section h3 { margin: 0 0 18px; font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: .13em; color: var(--jd-muted); }
+    #jewellery-design-directions[dir="rtl"] .token-section h3 { letter-spacing: 0; }
+    #jewellery-design-directions .swatch-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    #jewellery-design-directions .swatch { min-width: 0; }
+    #jewellery-design-directions .swatch-color { height: 80px; border: 1px solid var(--jd-line); background: var(--swatch); }
+    #jewellery-design-directions .swatch-name { display: block; font-size: 11px; margin-top: 8px; }
+    #jewellery-design-directions .swatch-value { display: block; color: var(--jd-muted); font-size: 11px; margin-top: 2px; font-family: monospace; direction: ltr; text-align: start; }
+    #jewellery-design-directions .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    #jewellery-design-directions .type-display { font-family: var(--jd-display); font-size: 46px; line-height: .98; }
+    #jewellery-design-directions .type-fa { font-family: var(--jd-fa); font-size: 38px; line-height: 1.4; text-align: right; }
+    #jewellery-design-directions .type-caption { color: var(--jd-muted); font-size: 11px; margin-top: 12px; }
+    #jewellery-design-directions .spec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--jd-line); border: 1px solid var(--jd-line); }
+    #jewellery-design-directions .spec { background: var(--jd-surface); padding: 16px; min-height: 94px; }
+    #jewellery-design-directions .spec span { display: block; color: var(--jd-muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+    #jewellery-design-directions .spec strong { display: block; margin-top: 12px; font-size: 12px; font-weight: 400; }
+    #jewellery-design-directions .component-samples { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; align-items: start; }
+    #jewellery-design-directions .sample { min-height: 136px; padding: 18px; border: 1px solid var(--jd-line); background: var(--jd-surface); }
+    #jewellery-design-directions[data-direction="modern"] .sample { border-radius: var(--jd-media-radius); }
+    #jewellery-design-directions .sample-label { display: block; color: var(--jd-muted); font-size: 11px; margin-bottom: 18px; }
+    #jewellery-design-directions .mini-divider { height: 1px; background: var(--jd-line); position: relative; margin: 20px 0; }
+    #jewellery-design-directions[data-direction="vintage"] .mini-divider::after { content: "◆"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--jd-accent); background: var(--jd-surface); padding: 0 7px; font-size: 7px; }
+    #jewellery-design-directions[data-direction="modern"] .mini-divider { background: linear-gradient(90deg, var(--jd-accent) 0 25%, var(--jd-line) 25%); }
+    #jewellery-design-directions[dir="rtl"][data-direction="modern"] .mini-divider { background: linear-gradient(-90deg, var(--jd-accent) 0 25%, var(--jd-line) 25%); }
+    #jewellery-design-directions .map-root { width: 150px; margin: 28px auto; padding: 14px; text-align: center; border: 1px solid var(--jd-accent); background: var(--jd-surface); }
+    #jewellery-design-directions .map-groups { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    #jewellery-design-directions .map-group { border-top: 2px solid var(--jd-accent); background: var(--jd-surface); padding: 16px; }
+    #jewellery-design-directions[data-direction="vintage"] .map-group { border: 3px double var(--jd-line); }
+    #jewellery-design-directions .map-group h3 { margin: 0 0 12px; font-size: 12px; font-weight: 400; }
+    #jewellery-design-directions .map-group ul { margin: 0; padding: 0; list-style: none; }
+    #jewellery-design-directions .map-group li { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--jd-line); font-size: 11px; }
+    #jewellery-design-directions .map-group li:last-child { border: 0; }
+    #jewellery-design-directions .phase { color: var(--jd-muted); font-size: 11px; }
+    #jewellery-design-directions .phase.mvp { color: var(--jd-accent); }
+    @media (max-width: 800px) {
+      #jewellery-design-directions[data-device="desktop"] .site-header { grid-template-columns: 120px 1fr 48px; padding-inline: 20px; gap: 12px; }
+      #jewellery-design-directions[data-device="desktop"] .site-header::after,
+      #jewellery-design-directions[data-device="desktop"] .site-header::before { left: 20px; right: 20px; }
+      #jewellery-design-directions[data-device="desktop"] .main-nav { gap: 14px; }
+      #jewellery-design-directions[data-device="desktop"] .site-tools span:not(:last-child) { display: none; }
+    }
+    @media (max-width: 940px) {
+      #jewellery-design-directions .review-bar { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    }
+    @media (max-width: 720px) {
+      #jewellery-design-directions .review-bar { grid-template-columns: 1fr 1fr; align-items: stretch; }
+      #jewellery-design-directions .review-group { width: auto; }
+      #jewellery-design-directions .review-actions { flex: 1; }
+      #jewellery-design-directions .review-actions button { flex: 1; }
+      #jewellery-design-directions .site-stage { padding: 8px; }
+      #jewellery-design-directions .tokens-stage, #jewellery-design-directions .map-stage { padding: 20px 14px; }
+      #jewellery-design-directions .system-title { align-items: start; flex-direction: column; }
+      #jewellery-design-directions .system-title p { text-align: start; }
+      #jewellery-design-directions .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+      #jewellery-design-directions .type-grid, #jewellery-design-directions .component-samples { grid-template-columns: 1fr; }
+      #jewellery-design-directions .spec-grid, #jewellery-design-directions .map-groups { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      #jewellery-design-directions .review-bar { grid-template-columns: 1fr 1fr; }
+      #jewellery-design-directions .review-group { width: auto; }
+      #jewellery-design-directions .review-group:nth-child(1),
+      #jewellery-design-directions .review-group:nth-child(2),
+      #jewellery-design-directions .review-group:nth-child(5) { grid-column: 1 / -1; }
+      #jewellery-design-directions .spec-grid, #jewellery-design-directions .map-groups { grid-template-columns: 1fr; }
+      #jewellery-design-directions .swatch-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #jewellery-design-directions .website { transition: none; }
+    }
+  </style>
+
+  <div class="review-bar" aria-label="Design review controls">
+    <div class="review-group">
+      <span class="review-label">Direction</span>
+      <div class="review-actions">
+        <button type="button" data-set="direction" data-value="vintage" aria-pressed="true">01 Archive Heirloom</button>
+        <button type="button" data-set="direction" data-value="modern" aria-pressed="false">02 Precision Atelier</button>
+      </div>
+    </div>
+    <div class="review-group">
+      <span class="review-label">Review</span>
+      <div class="review-actions" role="tablist">
+        <button type="button" data-panel-target="home" aria-selected="true">Homepage</button>
+        <button type="button" data-panel-target="tokens" aria-selected="false">Tokens</button>
+        <button type="button" data-panel-target="sitemap" aria-selected="false">Sitemap</button>
+      </div>
+    </div>
+    <div class="review-group">
+      <span class="review-label">Viewport</span>
+      <div class="review-actions">
+        <button type="button" data-set="device" data-value="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-set="device" data-value="mobile" aria-pressed="false">Mobile</button>
+      </div>
+    </div>
+    <div class="review-group">
+      <span class="review-label">Theme</span>
+      <div class="review-actions">
+        <button type="button" data-set="theme" data-value="light" aria-pressed="true">Light</button>
+        <button type="button" data-set="theme" data-value="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+    <div class="review-group">
+      <span class="review-label">Language</span>
+      <div class="review-actions">
+        <button type="button" data-set="language" data-value="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="language" data-value="fa" aria-pressed="false">فا</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="review-panel is-active" data-panel="home">
+    <div class="site-stage">
+      <article class="website" aria-label="Jewellery homepage design direction">
+        <div class="announcement" data-i18n="announcement">Complimentary insured delivery and returns</div>
+        <header class="site-header">
+          <span class="mobile-menu" aria-hidden="true">≡</span>
+          <div class="brand">Dorré</div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <span data-i18n="shop">Shop</span><span data-i18n="collections">Collections</span><span data-i18n="gifts">Gifts</span><span data-i18n="story">Our story</span><span data-i18n="services">Services</span>
+          </nav>
+          <div class="site-tools"><span data-i18n="search">Search</span><span data-i18n="saved">Saved</span><span data-i18n="bag">Bag · 0</span></div>
+        </header>
+
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow" data-copy="heroEyebrow">The archive collection · 2026</span>
+            <h1 data-copy="heroTitle">Gold, shaped into memory.</h1>
+            <p data-copy="heroBody">Modern heirlooms with the warmth, weight and quiet detail of objects kept for generations.</p>
+            <div class="cta-row"><a href="#collections" class="primary-action" data-i18n="explore">Explore the collection</a><a href="#appointments" class="text-action" data-i18n="appointment">Private appointment ↗</a></div>
+          </div>
+          <div class="campaign-art" role="img" aria-label="Editorial jewellery campaign placeholder">
+            <div class="portrait-shape"></div><div class="necklace-shape"></div><span class="art-caption" data-i18n="imageNote">Art-directed crop · jewellery remains visible</span>
+          </div>
+        </section>
+
+        <section class="site-section">
+          <div class="chapter-head"><span class="chapter-index">01</span><span data-i18n="shopCategory">Shop by category</span><span class="chapter-line"></span></div>
+          <div class="category-grid">
+            <article class="category-card"><div class="category-image"><div class="category-object"></div></div><div class="category-meta"><span data-i18n="rings">Rings</span><span class="category-count">24</span></div></article>
+            <article class="category-card"><div class="category-image"><div class="category-object"></div></div><div class="category-meta"><span data-i18n="necklaces">Necklaces</span><span class="category-count">18</span></div></article>
+            <article class="category-card"><div class="category-image"><div class="category-object"></div></div><div class="category-meta"><span data-i18n="earrings">Earrings</span><span class="category-count">32</span></div></article>
+            <article class="category-card"><div class="category-image"><div class="category-object"></div></div><div class="category-meta"><span data-i18n="bracelets">Bracelets</span><span class="category-count">14</span></div></article>
+          </div>
+        </section>
+
+        <section class="site-section products-section">
+          <div class="chapter-head"><span class="chapter-index">02</span><span data-i18n="bestSellers">Best sellers</span><span class="chapter-line"></span><span data-i18n="viewAll">View all</span></div>
+          <div class="product-grid">
+            <article class="product-card"><div class="product-image"><div class="product-object"></div><span class="wishlist">♡</span></div><div class="product-copy"><div class="product-name"><span data-i18n="memoryRing">Memory Ring</span><span>£620</span></div><div class="product-detail" data-i18n="goldDetail">18k recycled gold · 3 sizes</div></div></article>
+            <article class="product-card"><div class="product-image"><div class="product-object"></div><span class="wishlist">♡</span></div><div class="product-copy"><div class="product-name"><span data-i18n="dropPendant">Drop Pendant</span><span>£480</span></div><div class="product-detail" data-i18n="goldDetailTwo">18k recycled gold · 42 cm</div></div></article>
+            <article class="product-card"><div class="product-image"><div class="product-object"></div><span class="wishlist">♡</span></div><div class="product-copy"><div class="product-name"><span data-i18n="ribbonCuff">Ribbon Cuff</span><span>£760</span></div><div class="product-detail" data-i18n="goldDetailThree">18k recycled gold · adjustable</div></div></article>
+            <article class="product-card"><div class="product-image"><div class="product-object"></div><span class="wishlist">♡</span></div><div class="product-copy"><div class="product-name"><span data-i18n="orbitStuds">Orbit Studs</span><span>£390</span></div><div class="product-detail" data-i18n="goldDetailFour">18k recycled gold · pair</div></div></article>
+          </div>
+        </section>
+
+        <section class="site-section story-section">
+          <div class="story-media"></div>
+          <div class="story-copy"><span class="eyebrow" data-i18n="signature">Signature collection</span><h2 data-copy="signatureTitle">Objects with a past—and a future.</h2><p data-copy="signatureBody">Small irregularities, softened edges and warm surfaces give each piece the presence of something already loved.</p><div class="cta-row"><a href="#story" class="primary-action" data-i18n="discover">Discover the story</a></div></div>
+        </section>
+
+        <section class="site-section">
+          <div class="chapter-head"><span class="chapter-index">04</span><span data-i18n="shopIntent">Shop by intent</span><span class="chapter-line"></span></div>
+          <div class="intent-grid"><article class="intent-card"><strong data-i18n="everyday">Everyday gold</strong></article><article class="intent-card"><strong data-i18n="gifting">Considered gifts</strong></article><article class="intent-card"><strong data-i18n="occasion">For the occasion</strong></article></div>
+        </section>
+
+        <section class="site-section craft-section">
+          <div class="craft-detail"></div>
+          <div class="craft-copy"><span class="eyebrow" data-i18n="craft">Material and craft</span><h2 data-copy="craftTitle">Made slowly. Worn often.</h2><p data-copy="craftBody">Recycled 18k gold, responsibly sourced stones and precise hand-finishing. Every specification is stated clearly before purchase.</p><div class="cta-row"><a href="#materials" class="text-action" data-i18n="materials">Explore our materials ↗</a></div></div>
+        </section>
+
+        <section class="site-section">
+          <div class="chapter-head"><span class="chapter-index">06</span><span data-i18n="clientCare">Client care</span><span class="chapter-line"></span></div>
+          <div class="service-row">
+            <article class="service-item"><span class="service-num">01</span><strong data-i18n="delivery">Insured delivery</strong><span data-i18n="deliveryNote">Tracked and fully insured</span></article>
+            <article class="service-item"><span class="service-num">02</span><strong data-i18n="returns">Considered returns</strong><span data-i18n="returnsNote">Clear 30-day policy</span></article>
+            <article class="service-item"><span class="service-num">03</span><strong data-i18n="care">Lifetime care</strong><span data-i18n="careNote">Cleaning and repair guidance</span></article>
+            <article class="service-item"><span class="service-num">04</span><strong data-i18n="appointments">Appointments</strong><span data-i18n="appointmentsNote">In-person or video</span></article>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <div class="footer-top">
+            <div class="footer-signup"><h3 data-i18n="newsletter">Notes from the atelier</h3><div class="email-line"><span data-i18n="email">Email address</span><span>→</span></div></div>
+            <div class="footer-col"><strong data-i18n="shop">Shop</strong><span data-i18n="newIn">New in</span><span data-i18n="bestSellers">Best sellers</span><span data-i18n="gifts">Gifts</span></div>
+            <div class="footer-col"><strong data-i18n="help">Help</strong><span data-i18n="sizeGuide">Size guide</span><span data-i18n="shippingReturns">Delivery & returns</span><span data-i18n="contact">Contact</span></div>
+            <div class="footer-col"><strong data-i18n="about">About</strong><span data-i18n="story">Our story</span><span data-i18n="materialsLink">Materials</span><span data-i18n="journal">Journal</span></div>
+          </div>
+          <div class="footer-bottom"><span>© Dorré 2026</span><span data-i18n="locale">English · GBP · United Kingdom</span><span data-i18n="legal">Privacy · Terms · Accessibility</span></div>
+        </footer>
+      </article>
+    </div>
+  </section>
+
+  <section class="review-panel" data-panel="tokens">
+    <div class="tokens-stage">
+      <div class="system-title"><h2 data-system="name">Archive Heirloom</h2><p data-system="principle">Warm, collected and quietly ceremonial. Editorial character lives in typography, framing and small ornamental moments—not decoration everywhere.</p></div>
+      <section class="token-section"><h3>Semantic colour tokens</h3><div class="swatch-grid" data-swatches></div></section>
+      <section class="token-section"><h3>Typography</h3><div class="type-grid"><div><div class="type-display" data-system="typeSample">Gold, shaped into memory.</div><div class="type-caption" data-system="displayFont">Display · Cormorant Garamond 400/500</div></div><div><div class="type-fa" data-system="typeFaSample">طلا، شکل‌گرفته برای ماندن.</div><div class="type-caption" data-system="faFont">Persian · Noto Naskh Arabic 400/500</div></div></div></section>
+      <section class="token-section"><h3>Foundation tokens</h3><div class="spec-grid"><div class="spec"><span>Spacing</span><strong data-system="spacing">8px base · 72px section</strong></div><div class="spec"><span>Shape</span><strong data-system="shape">0px radius · framed media</strong></div><div class="spec"><span>Border</span><strong data-system="border">1px hairline · double-rule moments</strong></div><div class="spec"><span>Motion</span><strong data-system="motion">420ms · measured ease-out</strong></div></div></section>
+      <section class="token-section"><h3>Component DNA</h3><div class="component-samples"><div class="sample"><span class="sample-label">Primary action</span><span class="primary-action">Explore collection</span></div><div class="sample"><span class="sample-label">Section separator</span><div class="mini-divider"></div><span class="chapter-index">03 · Collection story</span></div><div class="sample"><span class="sample-label">Product metadata</span><div class="product-name"><span>Memory Ring</span><span>£620</span></div><div class="product-detail">18k recycled gold · 3 sizes</div></div></div></section>
+    </div>
+  </section>
+
+  <section class="review-panel" data-panel="sitemap">
+    <div class="map-stage">
+      <div class="system-title"><h2 data-i18n="siteMap">Shared site map</h2><p data-i18n="siteMapNote">The information architecture remains identical across both directions. Only the visual system changes.</p></div>
+      <div class="map-root" data-i18n="home">Home</div>
+      <div class="map-groups">
+        <section class="map-group"><h3 data-i18n="commerce">Shop & product</h3><ul><li><span data-i18n="shopAll">Shop all</span><span class="phase mvp">MVP</span></li><li><span data-i18n="newBest">New / best sellers</span><span class="phase mvp">MVP</span></li><li><span data-i18n="categoryPages">Category pages</span><span class="phase mvp">MVP</span></li><li><span data-i18n="collectionPages">Collection pages</span><span class="phase mvp">MVP</span></li><li><span data-i18n="productDetail">Product detail</span><span class="phase mvp">MVP</span></li><li><span data-i18n="searchResults">Search results</span><span class="phase mvp">MVP</span></li><li><span data-i18n="wishlist">Wishlist</span><span class="phase mvp">MVP</span></li><li><span data-i18n="checkout">Bag / checkout</span><span class="phase mvp">MVP</span></li></ul></section>
+        <section class="map-group"><h3 data-i18n="giftOccasion">Gifts & occasion</h3><ul><li><span data-i18n="giftGuide">Gift guide</span><span class="phase">P2</span></li><li><span data-i18n="giftPrice">Gifts by price</span><span class="phase">P2</span></li><li><span data-i18n="giftCards">Gift cards</span><span class="phase">P2</span></li><li><span data-i18n="giftPackaging">Gift packaging</span><span class="phase mvp">MVP</span></li><li><span data-i18n="bridal">Bridal / wedding</span><span class="phase">IF VALID</span></li></ul></section>
+        <section class="map-group"><h3 data-i18n="brandEditorial">Brand & editorial</h3><ul><li><span data-i18n="about">About</span><span class="phase mvp">MVP</span></li><li><span data-i18n="craftsmanship">Craftsmanship</span><span class="phase mvp">MVP</span></li><li><span data-i18n="materialsSourcing">Materials & sourcing</span><span class="phase mvp">MVP</span></li><li><span data-i18n="journal">Journal</span><span class="phase">P2</span></li><li><span data-i18n="sustainability">Sustainability</span><span class="phase">IF PROVEN</span></li></ul></section>
+        <section class="map-group"><h3 data-i18n="serviceSupport">Service & support</h3><ul><li><span data-i18n="sizeGuide">Size guide</span><span class="phase mvp">MVP</span></li><li><span data-i18n="careRepair">Care & repair</span><span class="phase mvp">MVP</span></li><li><span data-i18n="shippingReturns">Delivery & returns</span><span class="phase mvp">MVP</span></li><li><span data-i18n="warranty">Warranty</span><span class="phase mvp">MVP</span></li><li><span data-i18n="contactFaq">Contact / FAQ</span><span class="phase mvp">MVP</span></li><li><span data-i18n="appointments">Appointments</span><span class="phase">P2</span></li><li><span data-i18n="personalisation">Personalisation</span><span class="phase">P2</span></li><li><span data-i18n="accountOrders">Account / orders</span><span class="phase mvp">MVP</span></li></ul></section>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const root = document.getElementById('jewellery-design-directions');
+      const state = { direction: 'vintage', theme: 'light', device: 'desktop', language: 'en', panel: 'home' };
+      const common = {
+        en: {
+          announcement: 'Complimentary insured delivery and returns', shop: 'Shop', collections: 'Collections', gifts: 'Gifts', story: 'Our story', services: 'Services', search: 'Search', saved: 'Saved', bag: 'Bag · 0', explore: 'Explore the collection', appointment: 'Private appointment ↗', imageNote: 'Art-directed crop · jewellery remains visible', shopCategory: 'Shop by category', rings: 'Rings', necklaces: 'Necklaces', earrings: 'Earrings', bracelets: 'Bracelets', bestSellers: 'Best sellers', viewAll: 'View all', memoryRing: 'Memory Ring', dropPendant: 'Drop Pendant', ribbonCuff: 'Ribbon Cuff', orbitStuds: 'Orbit Studs', goldDetail: '18k recycled gold · 3 sizes', goldDetailTwo: '18k recycled gold · 42 cm', goldDetailThree: '18k recycled gold · adjustable', goldDetailFour: '18k recycled gold · pair', signature: 'Signature collection', discover: 'Discover the story', shopIntent: 'Shop by intent', everyday: 'Everyday gold', gifting: 'Considered gifts', occasion: 'For the occasion', craft: 'Material and craft', materials: 'Explore our materials ↗', materialsLink: 'Materials', clientCare: 'Client care', delivery: 'Insured delivery', deliveryNote: 'Tracked and fully insured', returns: 'Considered returns', returnsNote: 'Clear 30-day policy', care: 'Lifetime care', careNote: 'Cleaning and repair guidance', appointments: 'Appointments', appointmentsNote: 'In-person or video', newsletter: 'Notes from the atelier', email: 'Email address', newIn: 'New in', help: 'Help', sizeGuide: 'Size guide', shippingReturns: 'Delivery & returns', contact: 'Contact', about: 'About', journal: 'Journal', locale: 'English · GBP · United Kingdom', legal: 'Privacy · Terms · Accessibility', siteMap: 'Shared site map', siteMapNote: 'The information architecture remains identical across both directions. Only the visual system changes.', home: 'Home', commerce: 'Shop & product', shopAll: 'Shop all', newBest: 'New / best sellers', categoryPages: 'Category pages', collectionPages: 'Collection pages', productDetail: 'Product detail', searchResults: 'Search results', wishlist: 'Wishlist', checkout: 'Bag / checkout', giftOccasion: 'Gifts & occasion', giftGuide: 'Gift guide', giftPrice: 'Gifts by price', giftCards: 'Gift cards', giftPackaging: 'Gift packaging', bridal: 'Bridal / wedding', brandEditorial: 'Brand & editorial', craftsmanship: 'Craftsmanship', materialsSourcing: 'Materials & sourcing', sustainability: 'Sustainability', serviceSupport: 'Service & support', careRepair: 'Care & repair', warranty: 'Warranty', contactFaq: 'Contact / FAQ', personalisation: 'Personalisation', accountOrders: 'Account / orders'
+        },
+        fa: {
+          announcement: 'ارسال و بازگشت بیمه‌شده رایگان', shop: 'فروشگاه', collections: 'مجموعه‌ها', gifts: 'هدایا', story: 'داستان ما', services: 'خدمات', search: 'جست‌وجو', saved: 'ذخیره‌شده', bag: 'سبد · ۰', explore: 'مشاهده مجموعه', appointment: 'رزرو وقت خصوصی ↖', imageNote: 'برش هنری · جواهر کاملاً دیده شود', shopCategory: 'خرید بر اساس دسته', rings: 'انگشتر', necklaces: 'گردنبند', earrings: 'گوشواره', bracelets: 'دستبند', bestSellers: 'پرفروش‌ها', viewAll: 'مشاهده همه', memoryRing: 'انگشتر خاطره', dropPendant: 'آویز قطره', ribbonCuff: 'دستبند روبان', orbitStuds: 'گوشواره مدار', goldDetail: 'طلای بازیافتی ۱۸ عیار · ۳ سایز', goldDetailTwo: 'طلای بازیافتی ۱۸ عیار · ۴۲ سانتی‌متر', goldDetailThree: 'طلای بازیافتی ۱۸ عیار · قابل تنظیم', goldDetailFour: 'طلای بازیافتی ۱۸ عیار · جفت', signature: 'مجموعه شاخص', discover: 'کشف داستان مجموعه', shopIntent: 'خرید بر اساس نیاز', everyday: 'طلای روزمره', gifting: 'هدیه‌های سنجیده', occasion: 'برای مناسبت', craft: 'متریال و هنر ساخت', materials: 'آشنایی با متریال ↖', materialsLink: 'متریال', clientCare: 'خدمات مشتریان', delivery: 'ارسال بیمه‌شده', deliveryNote: 'قابل رهگیری و کاملاً بیمه', returns: 'بازگشت سنجیده', returnsNote: 'سیاست شفاف ۳۰ روزه', care: 'مراقبت مادام‌العمر', careNote: 'راهنمای نظافت و تعمیر', appointments: 'رزرو وقت', appointmentsNote: 'حضوری یا ویدئویی', newsletter: 'یادداشت‌هایی از کارگاه', email: 'نشانی ایمیل', newIn: 'تازه‌ها', help: 'راهنما', sizeGuide: 'راهنمای سایز', shippingReturns: 'ارسال و بازگشت', contact: 'تماس', about: 'درباره ما', journal: 'مجله', locale: 'فارسی · پوند · بریتانیا', legal: 'حریم خصوصی · قوانین · دسترس‌پذیری', siteMap: 'نقشه مشترک سایت', siteMapNote: 'معماری اطلاعات در هر دو جهت یکسان است و فقط سیستم بصری تغییر می‌کند.', home: 'خانه', commerce: 'فروشگاه و محصول', shopAll: 'همه محصولات', newBest: 'تازه‌ها / پرفروش‌ها', categoryPages: 'صفحات دسته‌بندی', collectionPages: 'صفحات مجموعه', productDetail: 'جزئیات محصول', searchResults: 'نتایج جست‌وجو', wishlist: 'علاقه‌مندی‌ها', checkout: 'سبد / پرداخت', giftOccasion: 'هدیه و مناسبت', giftGuide: 'راهنمای هدیه', giftPrice: 'هدیه بر اساس قیمت', giftCards: 'کارت هدیه', giftPackaging: 'بسته‌بندی هدیه', bridal: 'عروسی / نامزدی', brandEditorial: 'برند و محتوا', craftsmanship: 'هنر ساخت', materialsSourcing: 'متریال و منبع', sustainability: 'پایداری', serviceSupport: 'خدمات و پشتیبانی', careRepair: 'مراقبت و تعمیر', warranty: 'ضمانت', contactFaq: 'تماس / سوالات', personalisation: 'شخصی‌سازی', accountOrders: 'حساب / سفارش‌ها'
+        }
+      };
+      const directionCopy = {
+        vintage: {
+          en: { heroEyebrow: 'The archive collection · 2026', heroTitle: 'Gold, shaped into memory.', heroBody: 'Modern heirlooms with the warmth, weight and quiet detail of objects kept for generations.', signatureTitle: 'Objects with a past—and a future.', signatureBody: 'Small irregularities, softened edges and warm surfaces give each piece the presence of something already loved.', craftTitle: 'Made slowly. Worn often.', craftBody: 'Recycled 18k gold, responsibly sourced stones and precise hand-finishing. Every specification is stated clearly before purchase.' },
+          fa: { heroEyebrow: 'مجموعه آرشیو · ۲۰۲۶', heroTitle: 'طلا، شکل‌گرفته برای خاطره.', heroBody: 'میراثی معاصر با گرما، وزن و جزئیات آرام اشیایی که برای نسل‌ها نگه داشته می‌شوند.', signatureTitle: 'اشیایی با گذشته—و آینده.', signatureBody: 'ناهمواری‌های ظریف، لبه‌های نرم و سطوح گرم به هر قطعه حضور چیزی از پیش دوست‌داشته‌شده می‌دهند.', craftTitle: 'آهسته ساخته‌شده. همیشه پوشیده‌شده.', craftBody: 'طلای بازیافتی ۱۸ عیار، سنگ‌های مسئولانه و پرداخت دقیق دست. همه مشخصات پیش از خرید شفاف است.' }
+        },
+        modern: {
+          en: { heroEyebrow: 'Precision atelier · Series 01', heroTitle: 'Made to move with you.', heroBody: 'Pure forms, exact proportions and everyday gold designed around the rhythm of real life.', signatureTitle: 'Form follows feeling.', signatureBody: 'Continuous lines and balanced weight create pieces that feel precise without ever feeling clinical.', craftTitle: 'Clarity in every detail.', craftBody: 'Exact dimensions, material specifications and responsible sourcing—communicated with the same care as the objects themselves.' },
+          fa: { heroEyebrow: 'آتلیه دقیق · سری ۰۱', heroTitle: 'ساخته‌شده برای حرکت با شما.', heroBody: 'فرم‌های خالص، تناسب دقیق و طلای روزمره برای ریتم واقعی زندگی.', signatureTitle: 'فرم از احساس پیروی می‌کند.', signatureBody: 'خطوط پیوسته و وزن متعادل، قطعاتی دقیق می‌سازند که هرگز سرد و بی‌روح نیستند.', craftTitle: 'شفافیت در هر جزئیات.', craftBody: 'ابعاد دقیق، مشخصات متریال و منبع مسئولانه—با همان دقتی که خود قطعات ساخته می‌شوند.' }
+        }
+      };
+      const palettes = {
+        vintage: {
+          light: [['Background','#F3EBDD'],['Surface','#FBF7EF'],['Text','#241A14'],['Antique gold','#7A5A23'],['Oxblood detail','#6A272A']],
+          dark: [['Background','#15100D'],['Surface','#1D1713'],['Text','#F2E7D8'],['Antique gold','#D2AE64'],['Oxblood detail','#9C5654']]
+        },
+        modern: {
+          light: [['Background','#F1F3EF'],['Surface','#FAFBF8'],['Text','#121512'],['Mineral green','#365044'],['Brass detail','#9C7C35']],
+          dark: [['Background','#0B0E0C'],['Surface','#121713'],['Text','#F0F4EF'],['Mineral green','#A9C3B4'],['Brass detail','#D2B36B']]
+        }
+      };
+      const systems = {
+        vintage: { name: 'Archive Heirloom', principle: 'Warm, collected and quietly ceremonial. Editorial character lives in typography, framing and small ornamental moments—not decoration everywhere.', typeSample: 'Gold, shaped into memory.', typeFaSample: 'طلا، شکل‌گرفته برای ماندن.', displayFont: 'Display · Cormorant Garamond 400/500', faFont: 'Persian · Noto Naskh Arabic 400/500', spacing: '8px base · 72px section', shape: '0px radius · framed media', border: '1px hairline · double-rule moments', motion: '420ms · measured ease-out' },
+        modern: { name: 'Precision Atelier', principle: 'Quietly technical and highly contemporary. Character comes from proportion, asymmetry, indexed lines and confident negative space.', typeSample: 'Made to move with you.', typeFaSample: 'ساخته‌شده برای حرکت با شما.', displayFont: 'Display · Instrument Serif 400', faFont: 'Persian · Vazirmatn 400/500', spacing: '8px base · 84px section', shape: '18px media · pill controls', border: '1px hairline · indexed rule', motion: '280ms · precise ease-out' }
+      };
+
+      function render() {
+        const effectiveDevice = window.innerWidth <= 480 ? 'mobile' : state.device;
+        root.dataset.direction = state.direction;
+        root.dataset.theme = state.theme;
+        root.dataset.device = effectiveDevice;
+        root.lang = state.language;
+        root.dir = state.language === 'fa' ? 'rtl' : 'ltr';
+        root.querySelectorAll('[data-set]').forEach((button) => {
+          const activeValue = button.dataset.set === 'device' ? effectiveDevice : state[button.dataset.set];
+          button.setAttribute('aria-pressed', String(activeValue === button.dataset.value));
+        });
+        root.querySelectorAll('[data-panel-target]').forEach((button) => button.setAttribute('aria-selected', String(state.panel === button.dataset.panelTarget)));
+        root.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('is-active', panel.dataset.panel === state.panel));
+        root.querySelectorAll('[data-i18n]').forEach((node) => { const value = common[state.language][node.dataset.i18n]; if (value) node.textContent = value; });
+        const copy = directionCopy[state.direction][state.language];
+        root.querySelectorAll('[data-copy]').forEach((node) => { const value = copy[node.dataset.copy]; if (value) node.textContent = value; });
+        const system = systems[state.direction];
+        root.querySelectorAll('[data-system]').forEach((node) => { const value = system[node.dataset.system]; if (value) node.textContent = value; });
+        const swatches = root.querySelector('[data-swatches]');
+        swatches.innerHTML = palettes[state.direction][state.theme].map(([name,value]) => '<div class="swatch"><div class="swatch-color" style="--swatch:'+value+'"></div><span class="swatch-name">'+name+'</span><span class="swatch-value">'+value+'</span></div>').join('');
+      }
+      root.querySelectorAll('[data-set]').forEach((button) => button.addEventListener('click', () => { state[button.dataset.set] = button.dataset.value; render(); }));
+      root.querySelectorAll('[data-panel-target]').forEach((button) => button.addEventListener('click', () => { state.panel = button.dataset.panelTarget; render(); }));
+      window.addEventListener('resize', render);
+      render();
+    })();
+  </script>
+</div>
+
+<script src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
+<script src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
+<script>
+(() => {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =>
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest("[data-tooltip]")
+      : null;
+  const containsTarget = (trigger, target) =>
+    target?.nodeType != null && trigger.contains(target);
+  const getContent = (trigger) =>
+    trigger.getAttribute("data-tooltip")?.trim() ?? "";
+  const getPlacement = (trigger) => {
+    const placement = trigger.getAttribute("data-tooltip-placement");
+    return tooltipPlacements.has(placement) ? placement : "top";
+  };
+  const getTooltip = () => {
+    if (tooltip == null) {
+      tooltip = document.createElement("div");
+      tooltip.id = tooltipId;
+      tooltip.className = "tooltip";
+      tooltip.setAttribute("role", "tooltip");
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) => {
+    const ids = new Set(
+      (trigger.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute("aria-describedby");
+    } else {
+      trigger.setAttribute("aria-describedby", [...ids].join(" "));
+    }
+  };
+  const clearOpenTimeout = () => {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) => {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) => {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              "--tooltip-available-width",
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              "--tooltip-available-height",
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: "fixed",
+    })
+      .then(({ x, y }) => {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = "visible";
+      })
+      .catch(() => {
+        if (activeTrigger === trigger && request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) => {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = "hidden";
+    floating.style.transform = "translate(0, 0)";
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) => {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() < skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() => {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(":focus-visible")) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) => {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () => {
+    closeTooltip(false);
+    document.removeEventListener("pointerover", handlePointerOpen);
+    document.removeEventListener("pointerout", handleLeave);
+    document.removeEventListener("focusin", handleFocusIn);
+    document.removeEventListener("focusout", handleLeave);
+    document.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("contextmenu", handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener("pointerover", handlePointerOpen);
+  document.addEventListener("pointerout", handleLeave);
+  document.addEventListener("focusin", handleFocusIn);
+  document.addEventListener("focusout", handleLeave);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("contextmenu", handleContextMenu);
+  window.addEventListener("pagehide", destroy, { once: true });
+})();
+</script>
+<script id="codex-visualization-lucide" async src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script>
+<script>
+(() => {
+  const initialize = () => {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById("codex-visualization-lucide")
+    ?.addEventListener("load", initialize, { once: true });
+})();
+</script>
+
+</body>
+</html>

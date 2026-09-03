@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: #f1f0ec; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" dir="{{ dir }}" lang="{{ lang }}" style="{{ rootStyle }}">
+
+  <div aria-label="Design review controls" style="display:var(--jd-controls-display);flex-wrap:wrap;gap:12px 20px;align-items:end;margin-bottom:16px;padding:12px;font-family:'Manrope', Arial, sans-serif;color:var(--jd-text);background:var(--jd-surface);border:1px solid var(--jd-line)">
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <span data-i18n="uiDirection" style="font-size:11px;color:var(--jd-muted)">Direction</span>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <button type="button" onClick="{{ setVintage }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-v-line);background:var(--jd-btn-v-bg);color:var(--jd-btn-v-fg)" data-i18n="uiVintage">Archive Heirloom</button>
+        <button type="button" onClick="{{ setModern }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-m-line);background:var(--jd-btn-m-bg);color:var(--jd-btn-m-fg)" data-i18n="uiModern">Precision Atelier</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <span data-i18n="uiReview" style="font-size:11px;color:var(--jd-muted)">Review</span>
+      <div role="tablist" style="display:flex;flex-wrap:wrap;gap:4px">
+        <button type="button" onClick="{{ setHome }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-home-line);background:var(--jd-btn-home-bg);color:var(--jd-btn-home-fg)" data-i18n="uiHomepage">Homepage</button>
+        <button type="button" onClick="{{ setTokens }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-tok-line);background:var(--jd-btn-tok-bg);color:var(--jd-btn-tok-fg)" data-i18n="uiTokens">Tokens</button>
+        <button type="button" onClick="{{ setSitemap }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-map-line);background:var(--jd-btn-map-bg);color:var(--jd-btn-map-fg)" data-i18n="uiSitemap">Sitemap</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <span data-i18n="uiViewport" style="font-size:11px;color:var(--jd-muted)">Viewport</span>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <button type="button" onClick="{{ setDesktop }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-d-line);background:var(--jd-btn-d-bg);color:var(--jd-btn-d-fg)" data-i18n="uiDesktop">Desktop</button>
+        <button type="button" onClick="{{ setMobile }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-mob-line);background:var(--jd-btn-mob-bg);color:var(--jd-btn-mob-fg)" data-i18n="uiMobile">Mobile</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <span data-i18n="uiTheme" style="font-size:11px;color:var(--jd-muted)">Theme</span>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <button type="button" onClick="{{ setLight }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-lt-line);background:var(--jd-btn-lt-bg);color:var(--jd-btn-lt-fg)" data-i18n="uiLight">Light</button>
+        <button type="button" onClick="{{ setDark }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-dk-line);background:var(--jd-btn-dk-bg);color:var(--jd-btn-dk-fg)" data-i18n="uiDark">Dark</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <span data-i18n="uiLanguage" style="font-size:11px;color:var(--jd-muted)">Language</span>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <button type="button" onClick="{{ setEn }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-en-line);background:var(--jd-btn-en-bg);color:var(--jd-btn-en-fg)">EN</button>
+        <button type="button" onClick="{{ setFa }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-fa-line);background:var(--jd-btn-fa-bg);color:var(--jd-btn-fa-fg)">فا</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <span data-i18n="uiImages" style="font-size:11px;color:var(--jd-muted)">Images</span>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <button type="button" onClick="{{ togglePicker }}" style="font:inherit;min-height:44px;padding:8px 11px;cursor:pointer;border:1px solid var(--jd-btn-img-line);background:var(--jd-btn-img-bg);color:var(--jd-btn-img-fg)">{{ imagesButtonLabel }}</button>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ pickerOpen }}" hint-placeholder-val="{{ false }}">
+  <section aria-label="Image assignment" style="margin-bottom:16px;background:var(--jd-surface);color:var(--jd-text);border:1px solid var(--jd-line);font-family:'Manrope', Arial, sans-serif">
+    <header style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--jd-line)">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+        <span style="font-size:11px;color:var(--jd-muted)">{{ slotFieldLabel }}</span>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          <sc-for list="{{ slotOptions }}" as="o" hint-placeholder-count="14">
+            <button type="button" onClick="{{ o.select }}" style="font:inherit;min-height:36px;padding:8px 11px;cursor:pointer;font-size:11px;border:1px solid {{ o.line }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <button type="button" onClick="{{ closePicker }}" style="font:inherit;min-height:44px;padding:11px 15px;cursor:pointer;border:1px solid var(--jd-line);background:var(--jd-surface);color:var(--jd-text);font-size:11px;letter-spacing:.08em;text-transform:uppercase">{{ doneLabel }}</button>
+    </header>
+    <div style="display:grid;grid-template-columns:var(--jd-picker-cols);gap:20px;padding:16px">
+      <div style="min-height:170px;border:1px solid var(--jd-line);background-color:var(--jd-image);background-repeat:no-repeat;background-image:{{ previewImage }};background-size:{{ previewSize }};background-position:{{ previewFocus }}"></div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+          <label for="jd-upload" style="min-height:44px;display:inline-flex;align-items:center;padding:11px 15px;cursor:pointer;border:1px solid var(--jd-line);background:var(--jd-surface);font-size:11px;letter-spacing:.08em;text-transform:uppercase">{{ uploadLabel }}</label>
+          <input id="jd-upload" type="file" accept="image/*" onChange="{{ onUpload }}" style="width:1px;height:1px;opacity:0;position:absolute;pointer-events:none">
+          <button type="button" onClick="{{ resetSlot }}" style="font:inherit;min-height:44px;padding:11px 15px;cursor:pointer;border:1px solid var(--jd-line);background:var(--jd-surface);color:var(--jd-text);font-size:11px;letter-spacing:.08em;text-transform:uppercase">{{ resetLabel }}</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+          <span style="font-size:11px;color:var(--jd-muted);letter-spacing:.08em;text-transform:uppercase">{{ cropLabel }}</span>
+          <button type="button" onClick="{{ setCover }}" style="font:inherit;min-height:44px;padding:10px 14px;cursor:pointer;font-size:11px;border:1px solid {{ coverLine }};background:{{ coverBg }};color:{{ coverFg }}">{{ fillLabel }}</button>
+          <button type="button" onClick="{{ setContain }}" style="font:inherit;min-height:44px;padding:10px 14px;cursor:pointer;font-size:11px;border:1px solid {{ containLine }};background:{{ containBg }};color:{{ containFg }}">{{ fitLabel }}</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+          <span style="font-size:11px;color:var(--jd-muted);letter-spacing:.08em;text-transform:uppercase">{{ focusLabel }}</span>
+          <div style="display:grid;grid-template-columns:repeat(3, 44px);gap:4px">
+            <sc-for list="{{ focusOptions }}" as="f" hint-placeholder-count="9">
+              <button type="button" onClick="{{ f.select }}" aria-label="{{ f.label }}" title="{{ f.label }}" style="width:44px;height:32px;cursor:pointer;padding:0;border:1px solid {{ f.line }};background:{{ f.bg }}"></button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:0 16px 16px">
+      <p style="margin:0 0 10px;font-size:11px;color:var(--jd-muted);letter-spacing:.08em;text-transform:uppercase">{{ libraryLabel }}</p>
+      <div style="display:grid;grid-template-columns:var(--jd-library-cols);gap:8px">
+        <sc-for list="{{ library }}" as="a" hint-placeholder-count="27">
+          <button type="button" onClick="{{ a.select }}" aria-label="{{ a.label }}" style="aspect-ratio:1;cursor:pointer;padding:0;background-color:var(--jd-image);background-size:cover;background-position:center;border:2px solid {{ a.line }};background-image:{{ a.url }}"></button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Homepage">
+    <div style="background:var(--jd-bg);padding:16px">
+      <article aria-label="Jewellery homepage design direction" style="width:100%;max-width:var(--jd-page-max);margin:0 auto;background:var(--jd-surface);color:var(--jd-text);overflow:hidden;font-family:var(--jd-body-active);border:1px solid var(--jd-line)">
+
+        <div data-i18n="announcement" style="min-height:var(--jd-ann-min);display:flex;align-items:center;justify-content:center;padding:6px 16px;color:var(--jd-on-accent);background:var(--jd-accent);font-family:var(--jd-body-active);font-size:11px;letter-spacing:var(--jd-ls);text-align:center">Complimentary insured delivery and returns</div>
+
+        <header style="min-height:var(--jd-header-min);display:grid;grid-template-columns:var(--jd-header-cols);align-items:center;gap:var(--jd-header-gap);padding:0 var(--jd-page-pad);color:var(--jd-text);background:var(--jd-surface);position:relative;z-index:4" style-after="content:'';position:absolute;inset-inline:var(--jd-page-pad);bottom:0;border-bottom:1px solid var(--jd-line)" style-before="content:'';position:absolute;inset-inline:var(--jd-page-pad);bottom:4px;border-bottom:var(--jd-double-rule)">
+          <span aria-hidden="true" style="display:var(--jd-menu-display);font-size:18px">≡</span>
+          <div style="font-family:var(--jd-brand-font);font-size:var(--jd-brand-size);font-weight:var(--jd-brand-weight);letter-spacing:var(--jd-brand-ls);text-transform:var(--jd-brand-transform);text-align:var(--jd-brand-align);white-space:nowrap;display:flex;align-items:center;justify-content:var(--jd-brand-justify);position:var(--jd-brand-position);left:var(--jd-brand-left);transform:var(--jd-brand-shift)">
+            <span aria-hidden="true" style="display:block;flex:none;width:var(--jd-mark-w);height:var(--jd-mark-h);margin-inline-end:var(--jd-mark-gap)">
+              <img src="assets/brand/bella-gold-logo.png" alt="" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center">
+            </span>
+            <span data-i18n="brandName" style="display:var(--jd-brand-text-display)">Bella Gold</span>
+          </div>
+          <nav aria-label="Primary navigation" style="display:var(--jd-nav-display);justify-content:center;gap:var(--jd-nav-gap);font-family:var(--jd-body-active);font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase">
+            <span data-i18n="shop">Shop</span>
+            <span data-i18n="collections">Collections</span>
+            <span data-i18n="gifts">Gifts</span>
+            <span data-i18n="story">Our story</span>
+            <span data-i18n="services">Services</span>
+          </nav>
+          <div style="display:flex;justify-content:end;gap:var(--jd-tools-gap);font-size:11px;color:var(--jd-muted);position:var(--jd-tools-position);inset-inline-end:var(--jd-tools-inline-end);top:var(--jd-tools-top);transform:var(--jd-tools-shift)">
+            <span data-i18n="search">Search</span>
+            <span data-i18n="saved" style="display:var(--jd-saved-display)">Saved</span>
+            <span data-i18n="bag">Bag · 0</span>
+          </div>
+        </header>
+
+        <section style="min-height:var(--jd-hero-min);padding:var(--jd-hero-pad);position:relative;display:var(--jd-hero-display);flex-direction:column;grid-template-columns:var(--jd-hero-cols);gap:var(--jd-hero-gap);align-items:stretch;overflow:hidden">
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;order:var(--jd-copy-order);width:var(--jd-copy-w);align-self:var(--jd-copy-self);margin:var(--jd-copy-margin);padding:var(--jd-copy-pad);background:var(--jd-copy-bg);backdrop-filter:var(--jd-copy-blur)">
+            <span data-copy="heroEyebrow" style="color:var(--jd-accent);font-size:11px;letter-spacing:var(--jd-eyebrow-ls);text-transform:uppercase;margin-bottom:20px">The archive collection · 2026</span>
+            <h1 data-copy="heroTitle" style="font-family:var(--jd-display-active);font-weight:400;margin:0;letter-spacing:var(--jd-tight);font-size:var(--jd-h1);line-height:var(--jd-h1-lh)">Gold, shaped into memory.</h1>
+            <p data-copy="heroBody" style="color:var(--jd-muted);max-width:34em;margin:22px 0 0;font-size:14px;line-height:1.65">Modern heirlooms with the warmth, weight and quiet detail of objects kept for generations.</p>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:17px;margin-top:26px">
+              <a href="#collections" data-i18n="explore" style="border:1px solid var(--jd-accent);border-radius:var(--jd-control-radius);background:var(--jd-accent);color:var(--jd-on-accent);padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;font-family:var(--jd-body-active);font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;text-decoration:none">Explore the collection</a>
+              <a href="#appointments" data-i18n="appointment" style="min-height:44px;display:inline-flex;align-items:center;padding-bottom:5px;border-bottom:1px solid var(--jd-line);color:var(--jd-text);font-size:12px;text-decoration:none">Private appointment ↗</a>
+            </div>
+          </div>
+          <div role="img" aria-label="Editorial jewellery campaign placeholder" style="min-height:var(--jd-art-min);position:var(--jd-art-pos);inset:var(--jd-art-inset);order:var(--jd-art-order);overflow:hidden;border-radius:var(--jd-art-radius);border:var(--jd-art-border);outline:var(--jd-art-outline);outline-offset:-10px;background-color:var(--jd-image);background-image:var(--jd-slot-hero);background-size:var(--jd-slot-hero-size);background-position:var(--jd-slot-hero-pos);background-repeat:no-repeat">
+            <span data-i18n="imageNote" style="position:absolute;inset-inline:var(--jd-caption-inset);bottom:18px;width:max-content;max-width:calc(100% - 40px);color:var(--jd-caption-fg);background:var(--jd-caption-bg);border-inline-start:var(--jd-caption-rule);padding:7px 9px;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase">Art-directed crop · jewellery remains visible</span>
+          </div>
+        </section>
+
+        <section style="padding:var(--jd-section-space) var(--jd-page-pad);position:relative">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;color:var(--jd-muted)">
+            <span style="color:var(--jd-accent)">01</span>
+            <span data-i18n="shopCategory">Shop by category</span>
+            <span style="height:1px;flex:1;background:var(--jd-chapter-line);position:relative" style-after="content:var(--jd-diamond);position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);padding:0 8px;background:var(--jd-surface);color:var(--jd-accent);font-size:7px"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:var(--jd-cat-cols);gap:var(--jd-cat-gap)">
+            <article style="color:var(--jd-text)">
+              <div style="min-height:var(--jd-cat-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-cat-img-bg);background-image:var(--jd-slot-cat1);background-size:var(--jd-slot-cat1-size);background-position:var(--jd-slot-cat1-pos);background-repeat:no-repeat;border:var(--jd-cat-img-border);padding:var(--jd-cat-img-pad)" style-before="content:'';position:absolute;inset:9px;border:var(--jd-cat-frame)">
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:12px;padding-bottom:var(--jd-cat-meta-pb);border-bottom:1px solid var(--jd-cat-meta-line);font-family:var(--jd-cat-meta-font);font-size:var(--jd-cat-meta-size)">
+                <span data-i18n="rings">Rings</span><span style="color:var(--jd-muted);font-size:11px">24</span>
+              </div>
+            </article>
+            <article style="color:var(--jd-text);transform:translateY(var(--jd-cat-shift))">
+              <div style="min-height:var(--jd-cat-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-cat-img-bg);background-image:var(--jd-slot-cat2);background-size:var(--jd-slot-cat2-size);background-position:var(--jd-slot-cat2-pos);background-repeat:no-repeat;border:var(--jd-cat-img-border);padding:var(--jd-cat-img-pad)" style-before="content:'';position:absolute;inset:9px;border:var(--jd-cat-frame)">
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:12px;padding-bottom:var(--jd-cat-meta-pb);border-bottom:1px solid var(--jd-cat-meta-line);font-family:var(--jd-cat-meta-font);font-size:var(--jd-cat-meta-size)">
+                <span data-i18n="necklaces">Necklaces</span><span style="color:var(--jd-muted);font-size:11px">18</span>
+              </div>
+            </article>
+            <article style="color:var(--jd-text)">
+              <div style="min-height:var(--jd-cat-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-cat-img-bg);background-image:var(--jd-slot-cat3);background-size:var(--jd-slot-cat3-size);background-position:var(--jd-slot-cat3-pos);background-repeat:no-repeat;border:var(--jd-cat-img-border);padding:var(--jd-cat-img-pad)" style-before="content:'';position:absolute;inset:9px;border:var(--jd-cat-frame)">
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:12px;padding-bottom:var(--jd-cat-meta-pb);border-bottom:1px solid var(--jd-cat-meta-line);font-family:var(--jd-cat-meta-font);font-size:var(--jd-cat-meta-size)">
+                <span data-i18n="earrings">Earrings</span><span style="color:var(--jd-muted);font-size:11px">32</span>
+              </div>
+            </article>
+            <article style="color:var(--jd-text);transform:translateY(var(--jd-cat-shift))">
+              <div style="min-height:var(--jd-cat-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-cat-img-bg);background-image:var(--jd-slot-cat4);background-size:var(--jd-slot-cat4-size);background-position:var(--jd-slot-cat4-pos);background-repeat:no-repeat;border:var(--jd-cat-img-border);padding:var(--jd-cat-img-pad)" style-before="content:'';position:absolute;inset:9px;border:var(--jd-cat-frame)">
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:12px;padding-bottom:var(--jd-cat-meta-pb);border-bottom:1px solid var(--jd-cat-meta-line);font-family:var(--jd-cat-meta-font);font-size:var(--jd-cat-meta-size)">
+                <span data-i18n="bracelets">Bracelets</span><span style="color:var(--jd-muted);font-size:11px">14</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section style="padding:var(--jd-section-space) var(--jd-page-pad);position:relative;background:var(--jd-bg)">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;color:var(--jd-muted)">
+            <span style="color:var(--jd-accent)">02</span>
+            <span data-i18n="bestSellers">Best sellers</span>
+            <span style="height:1px;flex:1;background:var(--jd-chapter-line);position:relative" style-after="content:var(--jd-diamond);position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);padding:0 8px;background:var(--jd-bg);color:var(--jd-accent);font-size:7px"></span>
+            <span data-i18n="viewAll">View all</span>
+          </div>
+          <div style="display:grid;grid-template-columns:var(--jd-prod-cols);gap:var(--jd-prod-gap);overflow-x:var(--jd-prod-overflow);scroll-snap-type:inline mandatory;scrollbar-width:thin;padding-bottom:var(--jd-prod-pb)">
+            <article style="min-width:0;position:relative;scroll-snap-align:start">
+              <div style="min-height:var(--jd-prod-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-image);background-image:var(--jd-slot-prod1);background-size:var(--jd-slot-prod1-size);background-position:var(--jd-slot-prod1-pos);background-repeat:no-repeat;border:var(--jd-prod-img-border);box-shadow:var(--jd-prod-img-shadow)">
+                <span style="position:absolute;top:10px;inset-inline-end:10px;width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--jd-line);border-radius:50%;background:color-mix(in srgb, var(--jd-surface) 88%, transparent);color:var(--jd-text);font-size:11px">♡</span>
+              </div>
+              <div style="padding-top:13px;font-family:var(--jd-body-active);border-top:var(--jd-prod-copy-rule);margin-top:var(--jd-prod-copy-mt)">
+                <div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><span data-i18n="memoryRing">Memory Ring</span><span>£620</span></div>
+                <div data-i18n="goldDetail" style="color:var(--jd-muted);font-size:11px;margin-top:5px">18k gold · 3 sizes</div>
+              </div>
+            </article>
+            <article style="min-width:0;position:relative;scroll-snap-align:start">
+              <div style="min-height:var(--jd-prod-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-image);background-image:var(--jd-slot-prod2);background-size:var(--jd-slot-prod2-size);background-position:var(--jd-slot-prod2-pos);background-repeat:no-repeat;border:var(--jd-prod-img-border);box-shadow:var(--jd-prod-img-shadow)">
+                <span style="position:absolute;top:10px;inset-inline-end:10px;width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--jd-line);border-radius:50%;background:color-mix(in srgb, var(--jd-surface) 88%, transparent);color:var(--jd-text);font-size:11px">♡</span>
+              </div>
+              <div style="padding-top:13px;font-family:var(--jd-body-active);border-top:var(--jd-prod-copy-rule);margin-top:var(--jd-prod-copy-mt)">
+                <div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><span data-i18n="dropPendant">Drop Pendant</span><span>£480</span></div>
+                <div data-i18n="goldDetailTwo" style="color:var(--jd-muted);font-size:11px;margin-top:5px">18k gold · 42 cm</div>
+              </div>
+            </article>
+            <article style="min-width:0;position:relative;scroll-snap-align:start">
+              <div style="min-height:var(--jd-prod-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-image);background-image:var(--jd-slot-prod3);background-size:var(--jd-slot-prod3-size);background-position:var(--jd-slot-prod3-pos);background-repeat:no-repeat;border:var(--jd-prod-img-border);box-shadow:var(--jd-prod-img-shadow)">
+                <span style="position:absolute;top:10px;inset-inline-end:10px;width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--jd-line);border-radius:50%;background:color-mix(in srgb, var(--jd-surface) 88%, transparent);color:var(--jd-text);font-size:11px">♡</span>
+              </div>
+              <div style="padding-top:13px;font-family:var(--jd-body-active);border-top:var(--jd-prod-copy-rule);margin-top:var(--jd-prod-copy-mt)">
+                <div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><span data-i18n="ribbonCuff">Ribbon Cuff</span><span>£760</span></div>
+                <div data-i18n="goldDetailThree" style="color:var(--jd-muted);font-size:11px;margin-top:5px">18k gold · adjustable</div>
+              </div>
+            </article>
+            <article style="min-width:0;position:relative;scroll-snap-align:start">
+              <div style="min-height:var(--jd-prod-img-min);position:relative;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-image);background-image:var(--jd-slot-prod4);background-size:var(--jd-slot-prod4-size);background-position:var(--jd-slot-prod4-pos);background-repeat:no-repeat;border:var(--jd-prod-img-border);box-shadow:var(--jd-prod-img-shadow)">
+                <span style="position:absolute;top:10px;inset-inline-end:10px;width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--jd-line);border-radius:50%;background:color-mix(in srgb, var(--jd-surface) 88%, transparent);color:var(--jd-text);font-size:11px">♡</span>
+              </div>
+              <div style="padding-top:13px;font-family:var(--jd-body-active);border-top:var(--jd-prod-copy-rule);margin-top:var(--jd-prod-copy-mt)">
+                <div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><span data-i18n="orbitStuds">Orbit Studs</span><span>£390</span></div>
+                <div data-i18n="goldDetailFour" style="color:var(--jd-muted);font-size:11px;margin-top:5px">18k gold · pair</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section style="padding:var(--jd-section-space) var(--jd-page-pad);position:relative;display:grid;grid-template-columns:var(--jd-story-cols);gap:var(--jd-story-gap);align-items:center">
+          <div style="min-height:var(--jd-story-media-min);position:relative;order:var(--jd-story-media-order);border-radius:var(--jd-media-radius);overflow:hidden;border:var(--jd-story-media-border);outline:var(--jd-story-media-outline);outline-offset:-12px;background-color:var(--jd-image);background-image:var(--jd-slot-story);background-size:var(--jd-slot-story-size);background-position:var(--jd-slot-story-pos);background-repeat:no-repeat" style-after="content:var(--jd-story-index);position:absolute;right:18px;top:16px;color:var(--jd-muted);font-size:9px;letter-spacing:.12em"></div>
+          <div>
+            <span data-i18n="signature" style="display:block;color:var(--jd-accent);font-size:11px;letter-spacing:var(--jd-eyebrow-ls);text-transform:uppercase;margin-bottom:20px">Signature collection</span>
+            <h2 data-copy="signatureTitle" style="font-family:var(--jd-display-active);font-weight:400;margin:0;letter-spacing:var(--jd-tight);font-size:var(--jd-h2);line-height:.94">Objects with a past and a future.</h2>
+            <p data-copy="signatureBody" style="color:var(--jd-muted);font-size:14px;line-height:1.7;margin:20px 0 0">Small irregularities, softened edges and warm surfaces give each piece the presence of something already loved.</p>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:17px;margin-top:26px">
+              <a href="#story" data-i18n="discover" style="border:1px solid var(--jd-accent);border-radius:var(--jd-control-radius);background:var(--jd-accent);color:var(--jd-on-accent);padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;font-family:var(--jd-body-active);font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;text-decoration:none">Discover the story</a>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:var(--jd-section-space) var(--jd-page-pad);position:relative">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;color:var(--jd-muted)">
+            <span style="color:var(--jd-accent)">04</span>
+            <span data-i18n="shopIntent">Shop by intent</span>
+            <span style="height:1px;flex:1;background:var(--jd-chapter-line);position:relative" style-after="content:var(--jd-diamond);position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);padding:0 8px;background:var(--jd-surface);color:var(--jd-accent);font-size:7px"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:var(--jd-intent-cols);gap:var(--jd-intent-gap)">
+            <article style="min-height:var(--jd-intent-min);position:relative;display:flex;align-items:end;padding:20px;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-intent-bg);background-image:var(--jd-slot-intent1);background-size:var(--jd-slot-intent1-size);background-position:var(--jd-slot-intent1-pos);background-repeat:no-repeat;border:var(--jd-intent-border);color:var(--jd-text)">
+              <strong data-i18n="everyday" style="position:relative;z-index:1;font-family:var(--jd-display-active);font-weight:400;font-size:28px;padding:9px 13px;background:color-mix(in srgb, var(--jd-surface) 90%, transparent);border-radius:var(--jd-control-radius)">Everyday gold</strong>
+            </article>
+            <article style="min-height:var(--jd-intent-min);position:relative;display:flex;align-items:end;padding:20px;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-intent-bg);background-image:var(--jd-slot-intent2);background-size:var(--jd-slot-intent2-size);background-position:var(--jd-slot-intent2-pos);background-repeat:no-repeat;border:var(--jd-intent-border);color:var(--jd-text)">
+              <strong data-i18n="gifting" style="position:relative;z-index:1;font-family:var(--jd-display-active);font-weight:400;font-size:28px;padding:9px 13px;background:color-mix(in srgb, var(--jd-surface) 90%, transparent);border-radius:var(--jd-control-radius)">Considered gifts</strong>
+            </article>
+            <article style="min-height:var(--jd-intent-min);position:relative;display:flex;align-items:end;padding:20px;overflow:hidden;border-radius:var(--jd-media-radius);background-color:var(--jd-intent-bg);background-image:var(--jd-slot-intent3);background-size:var(--jd-slot-intent3-size);background-position:var(--jd-slot-intent3-pos);background-repeat:no-repeat;border:var(--jd-intent-border);color:var(--jd-text)">
+              <strong data-i18n="occasion" style="position:relative;z-index:1;font-family:var(--jd-display-active);font-weight:400;font-size:28px;padding:9px 13px;background:color-mix(in srgb, var(--jd-surface) 90%, transparent);border-radius:var(--jd-control-radius)">For the occasion</strong>
+            </article>
+          </div>
+        </section>
+
+        <section style="padding:var(--jd-section-space) var(--jd-page-pad);position:relative;display:grid;grid-template-columns:var(--jd-craft-cols);gap:var(--jd-craft-gap);align-items:center;background:var(--jd-surface-raised)">
+          <div style="min-height:var(--jd-craft-min);position:relative;background-color:var(--jd-image);background-image:var(--jd-slot-craft);background-size:var(--jd-slot-craft-size);background-position:var(--jd-slot-craft-pos);background-repeat:no-repeat;overflow:hidden;border-radius:var(--jd-media-radius);border:var(--jd-craft-border)"></div>
+          <div>
+            <span data-i18n="craft" style="display:block;color:var(--jd-accent);font-size:11px;letter-spacing:var(--jd-eyebrow-ls);text-transform:uppercase;margin-bottom:20px">Material and craft</span>
+            <h2 data-copy="craftTitle" style="font-family:var(--jd-display-active);font-weight:400;margin:0;letter-spacing:var(--jd-tight);font-size:var(--jd-h2);line-height:.94">Made slowly. Worn often.</h2>
+            <p data-copy="craftBody" style="color:var(--jd-muted);font-size:14px;line-height:1.7;margin:20px 0 0">18k gold, responsibly sourced stones and precise hand-finishing. Every specification is stated clearly before purchase.</p>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:17px;margin-top:26px">
+              <a href="#materials" data-i18n="materials" style="min-height:44px;display:inline-flex;align-items:center;padding-bottom:5px;border-bottom:1px solid var(--jd-line);color:var(--jd-text);font-size:12px;text-decoration:none">Explore our materials ↗</a>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:var(--jd-section-space) var(--jd-page-pad);position:relative">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;color:var(--jd-muted)">
+            <span style="color:var(--jd-accent)">06</span>
+            <span data-i18n="clientCare">Client care</span>
+            <span style="height:1px;flex:1;background:var(--jd-chapter-line);position:relative" style-after="content:var(--jd-diamond);position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);padding:0 8px;background:var(--jd-surface);color:var(--jd-accent);font-size:7px"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:var(--jd-svc-cols);border-top:1px solid var(--jd-line);border-bottom:1px solid var(--jd-line)">
+            <article style="min-height:112px;padding:18px;border-inline-end:1px solid var(--jd-line);border-bottom:var(--jd-svc-row-rule)">
+              <span style="display:block;color:var(--jd-accent);font-size:11px;margin-bottom:18px">01</span>
+              <strong data-i18n="delivery" style="display:block;font-size:13px;font-weight:400">Insured delivery</strong>
+              <span data-i18n="deliveryNote" style="display:block;color:var(--jd-muted);font-size:11px;margin-top:7px">Tracked and fully insured</span>
+            </article>
+            <article style="min-height:112px;padding:18px;border-inline-end:var(--jd-svc-2-rule);border-bottom:var(--jd-svc-row-rule)">
+              <span style="display:block;color:var(--jd-accent);font-size:11px;margin-bottom:18px">02</span>
+              <strong data-i18n="returns" style="display:block;font-size:13px;font-weight:400">Considered returns</strong>
+              <span data-i18n="returnsNote" style="display:block;color:var(--jd-muted);font-size:11px;margin-top:7px">Clear 30-day policy</span>
+            </article>
+            <article style="min-height:112px;padding:18px;border-inline-end:1px solid var(--jd-line)">
+              <span style="display:block;color:var(--jd-accent);font-size:11px;margin-bottom:18px">03</span>
+              <strong data-i18n="care" style="display:block;font-size:13px;font-weight:400">Lifetime care</strong>
+              <span data-i18n="careNote" style="display:block;color:var(--jd-muted);font-size:11px;margin-top:7px">Cleaning and repair guidance</span>
+            </article>
+            <article style="min-height:112px;padding:18px">
+              <span style="display:block;color:var(--jd-accent);font-size:11px;margin-bottom:18px">04</span>
+              <strong data-i18n="appointments" style="display:block;font-size:13px;font-weight:400">Appointments</strong>
+              <span data-i18n="appointmentsNote" style="display:block;color:var(--jd-muted);font-size:11px;margin-top:7px">In-person or video</span>
+            </article>
+          </div>
+        </section>
+
+        <footer style="padding:var(--jd-footer-pad);background:var(--jd-bg)">
+          <div style="display:grid;grid-template-columns:var(--jd-footer-cols);gap:26px">
+            <div style="grid-column:var(--jd-footer-signup-span)">
+              <h3 data-i18n="newsletter" style="font-family:var(--jd-display-active);font-weight:400;font-size:30px;margin:0 0 14px">Notes from the atelier</h3>
+              <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--jd-text);padding:10px 0;color:var(--jd-muted);font-size:12px"><span data-i18n="email">Email address</span><span>→</span></div>
+            </div>
+            <div>
+              <strong data-i18n="shop" style="display:block;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;margin-bottom:13px">Shop</strong>
+              <span data-i18n="newIn" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">New in</span>
+              <span data-i18n="bestSellers" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Best sellers</span>
+              <span data-i18n="gifts" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Gifts</span>
+            </div>
+            <div>
+              <strong data-i18n="help" style="display:block;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;margin-bottom:13px">Help</strong>
+              <span data-i18n="sizeGuide" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Size guide</span>
+              <span data-i18n="shippingReturns" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Delivery &amp; returns</span>
+              <span data-i18n="contact" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Contact</span>
+            </div>
+            <div>
+              <strong data-i18n="about" style="display:block;font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase;margin-bottom:13px">About</strong>
+              <span data-i18n="story" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Our story</span>
+              <span data-i18n="materialsLink" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Materials</span>
+              <span data-i18n="journal" style="display:block;color:var(--jd-muted);font-size:11px;margin:9px 0">Journal</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:var(--jd-footer-bottom-dir);justify-content:space-between;gap:18px;margin-top:42px;padding-top:15px;border-top:1px solid var(--jd-line);color:var(--jd-muted);font-size:11px">
+            <span>© Bella Gold Gallery 2026</span>
+            <span data-i18n="locale">English · GBP · United Kingdom</span>
+            <span data-i18n="legal">Privacy · Terms · Accessibility</span>
+          </div>
+        </footer>
+      </article>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showTokens }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Tokens">
+    <div style="background:var(--jd-bg);color:var(--jd-text);padding:var(--jd-stage-pad);font-family:var(--jd-body-active);border:1px solid var(--jd-line)">
+      <div style="display:flex;justify-content:space-between;gap:20px;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--jd-line)">
+        <h2 data-system="name" style="margin:0;font-family:var(--jd-display-active);font-weight:400;font-size:42px">Archive Heirloom</h2>
+        <p data-system="principle" style="margin:0;color:var(--jd-muted);font-size:11px;max-width:44em;text-align:end">Warm, collected and quietly ceremonial. Editorial character lives in typography, framing and small ornamental moments, not decoration everywhere.</p>
+      </div>
+      <section style="padding:28px 0;border-bottom:1px solid var(--jd-line)">
+        <h3 style="margin:0 0 18px;font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:var(--jd-ls);color:var(--jd-muted)" data-i18n="tokColour">Semantic colour tokens</h3>
+        <div style="display:grid;grid-template-columns:var(--jd-swatch-cols);gap:12px">
+          <sc-for list="{{ swatches }}" as="sw" hint-placeholder-count="5">
+            <div style="min-width:0">
+              <div style="height:80px;border:1px solid var(--jd-line);background:{{ sw.value }}"></div>
+              <span style="display:block;font-size:11px;margin-top:8px">{{ sw.name }}</span>
+              <span style="display:block;color:var(--jd-muted);font-size:11px;margin-top:2px;font-family:monospace;direction:ltr;text-align:start">{{ sw.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      <section style="padding:28px 0;border-bottom:1px solid var(--jd-line)">
+        <h3 style="margin:0 0 18px;font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:var(--jd-ls);color:var(--jd-muted)" data-i18n="tokType">Typography</h3>
+        <div style="display:grid;grid-template-columns:var(--jd-type-cols);gap:28px">
+          <div>
+            <div data-system="typeSample" style="font-family:var(--jd-display);font-size:46px;line-height:.98">Gold, shaped into memory.</div>
+            <div data-system="displayFont" style="color:var(--jd-muted);font-size:11px;margin-top:12px">Display · Cormorant Garamond 400/500</div>
+          </div>
+          <div>
+            <div data-system="typeFaSample" style="font-family:var(--jd-fa);font-size:38px;line-height:1.4;text-align:right">طلا، شکل‌گرفته برای ماندن.</div>
+            <div data-system="faFont" style="color:var(--jd-muted);font-size:11px;margin-top:12px">Persian · Noto Naskh Arabic 400/500</div>
+          </div>
+        </div>
+      </section>
+      <section style="padding:28px 0;border-bottom:1px solid var(--jd-line)">
+        <h3 style="margin:0 0 18px;font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:var(--jd-ls);color:var(--jd-muted)" data-i18n="tokFoundation">Foundation tokens</h3>
+        <div style="display:grid;grid-template-columns:var(--jd-spec-cols);gap:1px;background:var(--jd-line);border:1px solid var(--jd-line)">
+          <div style="background:var(--jd-surface);padding:16px;min-height:94px">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;text-transform:uppercase;letter-spacing:var(--jd-ls)" data-i18n="tokSpacing">Spacing</span>
+            <strong data-system="spacing" style="display:block;margin-top:12px;font-size:12px;font-weight:400">8px base · 72px section</strong>
+          </div>
+          <div style="background:var(--jd-surface);padding:16px;min-height:94px">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;text-transform:uppercase;letter-spacing:var(--jd-ls)" data-i18n="tokShape">Shape</span>
+            <strong data-system="shape" style="display:block;margin-top:12px;font-size:12px;font-weight:400">0px radius · framed media</strong>
+          </div>
+          <div style="background:var(--jd-surface);padding:16px;min-height:94px">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;text-transform:uppercase;letter-spacing:var(--jd-ls)" data-i18n="tokBorder">Border</span>
+            <strong data-system="border" style="display:block;margin-top:12px;font-size:12px;font-weight:400">1px hairline · double-rule moments</strong>
+          </div>
+          <div style="background:var(--jd-surface);padding:16px;min-height:94px">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;text-transform:uppercase;letter-spacing:var(--jd-ls)" data-i18n="tokMotion">Motion</span>
+            <strong data-system="motion" style="display:block;margin-top:12px;font-size:12px;font-weight:400">420ms · measured ease-out</strong>
+          </div>
+        </div>
+      </section>
+      <section style="padding:28px 0">
+        <h3 style="margin:0 0 18px;font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:var(--jd-ls);color:var(--jd-muted)" data-i18n="tokDna">Component DNA</h3>
+        <div style="display:grid;grid-template-columns:var(--jd-sample-cols);gap:18px;align-items:start">
+          <div style="min-height:136px;padding:18px;border:1px solid var(--jd-line);background:var(--jd-surface);border-radius:var(--jd-sample-radius)">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;margin-bottom:18px" data-i18n="tokPrimary">Primary action</span>
+            <span style="border:1px solid var(--jd-accent);border-radius:var(--jd-control-radius);background:var(--jd-accent);color:var(--jd-on-accent);padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;font-family:var(--jd-body-active);font-size:11px;letter-spacing:var(--jd-ls);text-transform:uppercase">Explore collection</span>
+          </div>
+          <div style="min-height:136px;padding:18px;border:1px solid var(--jd-line);background:var(--jd-surface);border-radius:var(--jd-sample-radius)">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;margin-bottom:18px" data-i18n="tokSeparator">Section separator</span>
+            <div style="height:1px;background:var(--jd-chapter-line);position:relative;margin:20px 0" style-after="content:var(--jd-diamond);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--jd-accent);background:var(--jd-surface);padding:0 7px;font-size:7px"></div>
+            <span style="color:var(--jd-accent);font-size:11px">03 · Collection story</span>
+          </div>
+          <div style="min-height:136px;padding:18px;border:1px solid var(--jd-line);background:var(--jd-surface);border-radius:var(--jd-sample-radius)">
+            <span style="display:block;color:var(--jd-muted);font-size:11px;margin-bottom:18px" data-i18n="tokMeta">Product metadata</span>
+            <div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><span>Memory Ring</span><span>£620</span></div>
+            <div style="color:var(--jd-muted);font-size:11px;margin-top:5px">18k gold · 3 sizes</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showSitemap }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Sitemap">
+    <div style="background:var(--jd-bg);color:var(--jd-text);padding:var(--jd-stage-pad);font-family:var(--jd-body-active);border:1px solid var(--jd-line)">
+      <div style="display:flex;justify-content:space-between;gap:20px;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--jd-line)">
+        <h2 data-i18n="siteMap" style="margin:0;font-family:var(--jd-display-active);font-weight:400;font-size:42px">Shared site map</h2>
+        <p data-i18n="siteMapNote" style="margin:0;color:var(--jd-muted);font-size:11px;max-width:44em;text-align:end">The information architecture remains identical across both directions. Only the visual system changes.</p>
+      </div>
+      <div data-i18n="home" style="width:150px;margin:28px auto;padding:14px;text-align:center;border:1px solid var(--jd-accent);background:var(--jd-surface)">Home</div>
+      <div style="display:grid;grid-template-columns:var(--jd-map-cols);gap:12px">
+        <section style="border-top:2px solid var(--jd-accent);border-inline:var(--jd-map-side-rule);border-bottom:var(--jd-map-side-rule);background:var(--jd-surface);padding:16px">
+          <h3 data-i18n="commerce" style="margin:0 0 12px;font-size:12px;font-weight:400">Shop &amp; product</h3>
+          <ul style="margin:0;padding:0;list-style:none">
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="shopAll">Shop all</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="newBest">New / best sellers</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="categoryPages">Category pages</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="collectionPages">Collection pages</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="productDetail">Product detail</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="searchResults">Search results</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="wishlist">Wishlist</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;font-size:11px"><span data-i18n="checkout">Bag / checkout</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+          </ul>
+        </section>
+        <section style="border-top:2px solid var(--jd-accent);border-inline:var(--jd-map-side-rule);border-bottom:var(--jd-map-side-rule);background:var(--jd-surface);padding:16px">
+          <h3 data-i18n="giftOccasion" style="margin:0 0 12px;font-size:12px;font-weight:400">Gifts &amp; occasion</h3>
+          <ul style="margin:0;padding:0;list-style:none">
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="giftGuide">Gift guide</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">P2</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="giftPrice">Gifts by price</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">P2</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="giftCards">Gift cards</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">P2</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="giftPackaging">Gift packaging</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;font-size:11px"><span data-i18n="bridal">Bridal / wedding</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">IF VALID</span></li>
+          </ul>
+        </section>
+        <section style="border-top:2px solid var(--jd-accent);border-inline:var(--jd-map-side-rule);border-bottom:var(--jd-map-side-rule);background:var(--jd-surface);padding:16px">
+          <h3 data-i18n="brandEditorial" style="margin:0 0 12px;font-size:12px;font-weight:400">Brand &amp; editorial</h3>
+          <ul style="margin:0;padding:0;list-style:none">
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="about">About</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="craftsmanship">Craftsmanship</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="materialsSourcing">Materials &amp; sourcing</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="journal">Journal</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">P2</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;font-size:11px"><span data-i18n="sustainability">Sustainability</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">IF PROVEN</span></li>
+          </ul>
+        </section>
+        <section style="border-top:2px solid var(--jd-accent);border-inline:var(--jd-map-side-rule);border-bottom:var(--jd-map-side-rule);background:var(--jd-surface);padding:16px">
+          <h3 data-i18n="serviceSupport" style="margin:0 0 12px;font-size:12px;font-weight:400">Service &amp; support</h3>
+          <ul style="margin:0;padding:0;list-style:none">
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="sizeGuide">Size guide</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="careRepair">Care &amp; repair</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="shippingReturns">Delivery &amp; returns</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="warranty">Warranty</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="contactFaq">Contact / FAQ</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="appointments">Appointments</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">P2</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--jd-line);font-size:11px"><span data-i18n="personalisation">Personalisation</span><span style="display:var(--jd-phase-display);color:var(--jd-muted);font-size:11px">P2</span></li>
+            <li style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;font-size:11px"><span data-i18n="accountOrders">Account / orders</span><span style="display:var(--jd-phase-display);color:var(--jd-accent);font-size:11px">MVP</span></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+</div></x-dc>
+<script data-dc-script data-props='{"showControls":{"editor":"boolean","default":true,"tsType":"boolean","section":"Review"},"showPhaseLabels":{"editor":"boolean","default":true,"tsType":"boolean","section":"Review"}}'>
+const PALETTE = {
+  vintage: {
+    light: { bg:'#F3EBDD', surface:'#FBF7EF', raised:'#E9DDCA', text:'#241A14', muted:'#6F625A', line:'#B9A990', accent:'#7A5A23', onAccent:'#FFF8EB', detail:'#6A272A', image:'#D7C3A7' },
+    dark:  { bg:'#15100D', surface:'#1D1713', raised:'#2A211B', text:'#F2E7D8', muted:'#B9A99B', line:'#4A3C31', accent:'#D2AE64', onAccent:'#17100B', detail:'#9C5654', image:'#332820' }
+  },
+  modern: {
+    light: { bg:'#F1F3EF', surface:'#FAFBF8', raised:'#E3E8E2', text:'#121512', muted:'#5E655F', line:'#CDD3CC', accent:'#365044', onAccent:'#F8FBF7', detail:'#9C7C35', image:'#DCE4DD' },
+    dark:  { bg:'#0B0E0C', surface:'#121713', raised:'#1B221D', text:'#F0F4EF', muted:'#A2AAA4', line:'#303932', accent:'#A9C3B4', onAccent:'#0B0E0C', detail:'#D2B36B', image:'#1A241E' }
+  }
+};
+
+const SWATCH_NAMES = {
+  vintage: ['Background', 'Surface', 'Text', 'Antique gold', 'Oxblood detail'],
+  modern: ['Background', 'Surface', 'Text', 'Mineral green', 'Brass detail']
+};
+const SWATCH_KEYS = ['bg', 'surface', 'text', 'accent', 'detail'];
+
+const FONTS = {
+  vintage: { display: '"Cormorant Garamond", Georgia, serif', body: 'Georgia, serif', fa: '"Noto Naskh Arabic", serif', brand: '"Cormorant Garamond", Georgia, serif' },
+  modern: { display: '"Instrument Serif", Georgia, serif', body: '"Manrope", Arial, sans-serif', fa: '"Vazirmatn", Arial, sans-serif', brand: '"Manrope", Arial, sans-serif' }
+};
+
+const SYSTEMS = {
+  vintage: { name:'Archive Heirloom', principle:'Warm, collected and quietly ceremonial. Editorial character lives in typography, framing and small ornamental moments, not decoration everywhere.', typeSample:'Gold, shaped into memory.', typeFaSample:'طلا، شکل‌گرفته برای ماندن.', displayFont:'Display · Cormorant Garamond 400/500', faFont:'Persian · Noto Naskh Arabic 400/500', spacing:'8px base · 72px section', shape:'0px radius · framed media', border:'1px hairline · double-rule moments', motion:'420ms · measured ease-out', fa:{ name:'میراث آرشیو', principle:'گرم، گردآوری‌شده و به‌آرامی آیینی. شخصیت سردبیری در تایپوگرافی، قاب‌بندی و لحظه‌های تزئینی کوچک زندگی می‌کند، نه در تزئین همه‌جا.' } },
+  modern: { name:'Precision Atelier', principle:'Quietly technical and highly contemporary. Character comes from proportion, asymmetry, indexed lines and confident negative space.', typeSample:'Made to move with you.', typeFaSample:'ساخته‌شده برای حرکت با شما.', displayFont:'Display · Instrument Serif 400', faFont:'Persian · Vazirmatn 400/500', spacing:'8px base · 84px section', shape:'18px media · pill controls', border:'1px hairline · indexed rule', motion:'280ms · precise ease-out', fa:{ name:'آتلیه دقیق', principle:'به‌آرامی فنی و کاملاً معاصر. شخصیت از تناسب، عدم تقارن، خطوط شماره‌گذاری‌شده و فضای منفی مطمئن می‌آید.' } }
+};
+
+const DIRECTION_COPY = {
+  vintage: {
+    en: { heroEyebrow:'The archive collection · 2026', heroTitle:'Gold, shaped into memory.', heroBody:'Modern heirlooms with the warmth, weight and quiet detail of objects kept for generations.', signatureTitle:'Objects with a past and a future.', signatureBody:'Small irregularities, softened edges and warm surfaces give each piece the presence of something already loved.', craftTitle:'Made slowly. Worn often.', craftBody:'18k gold, responsibly sourced stones and precise hand-finishing. Every specification is stated clearly before purchase.' },
+    fa: { heroEyebrow:'مجموعه آرشیو · ۲۰۲۶', heroTitle:'طلا، شکل‌گرفته برای ماندن.', heroBody:'میراثی معاصر با گرما، وزن و جزئیات آرام چیزهایی که نسل‌به‌نسل نگه داشته می‌شوند.', signatureTitle:'اشیایی با گذشته و آینده.', signatureBody:'ناهمواری‌های ظریف، لبه‌های نرم و سطوح گرم به هر قطعه حضور چیزی از پیش دوست‌داشته‌شده می‌دهند.', craftTitle:'با آرامش ساخته می‌شود. هر روز پوشیده می‌شود.', craftBody:'طلای ۱۸ عیار، سنگ‌های با تأمین مسئولانه و پرداخت دقیق دست. همه مشخصات پیش از خرید شفاف بیان می‌شود.' }
+  },
+  modern: {
+    en: { heroEyebrow:'Precision atelier · Series 01', heroTitle:'Made to move with you.', heroBody:'Pure forms, exact proportions and everyday gold designed around the rhythm of real life.', signatureTitle:'Form follows feeling.', signatureBody:'Continuous lines and balanced weight create pieces that feel precise without ever feeling clinical.', craftTitle:'Clarity in every detail.', craftBody:'Exact dimensions, material specifications and responsible sourcing, communicated with the same care as the objects themselves.' },
+    fa: { heroEyebrow:'آتلیه دقیق · سری ۰۱', heroTitle:'ساخته‌شده برای حرکت با شما.', heroBody:'فرم‌های خالص، تناسب دقیق و طلای روزمره برای ریتم واقعی زندگی.', signatureTitle:'فرم از احساس پیروی می‌کند.', signatureBody:'خطوط پیوسته و وزن متعادل، قطعاتی دقیق می‌سازند که هرگز سرد و بی‌روح نیستند.', craftTitle:'شفافیت در تمام جزئیات.', craftBody:'ابعاد دقیق، مشخصات متریال و تأمین مسئولانه، با همان دقتی بیان می‌شود که خود قطعات ساخته می‌شوند.' }
+  }
+};
+
+const FA = {
+  brandName:'بلا گلد', announcement:'ارسال و بازگشت بیمه‌شده رایگان', shop:'فروشگاه', collections:'مجموعه‌ها', gifts:'هدایا', story:'داستان ما', services:'خدمات', search:'جست‌وجو', saved:'ذخیره‌شده', bag:'سبد · ۰', explore:'مشاهده مجموعه', appointment:'رزرو وقت خصوصی ↖', imageNote:'برش هنری · جواهر کاملاً دیده شود', shopCategory:'خرید بر اساس دسته', rings:'انگشتر', necklaces:'گردنبند', earrings:'گوشواره', bracelets:'دستبند', bestSellers:'پرفروش‌ها', viewAll:'مشاهده همه', memoryRing:'انگشتر خاطره', dropPendant:'آویز قطره', ribbonCuff:'دستبند روبان', orbitStuds:'گوشواره مدار', goldDetail:'طلای ۱۸ عیار · ۳ سایز', goldDetailTwo:'طلای ۱۸ عیار · ۴۲ سانتی‌متر', goldDetailThree:'طلای ۱۸ عیار · قابل تنظیم', goldDetailFour:'طلای ۱۸ عیار · جفت', signature:'مجموعه شاخص', discover:'کشف داستان مجموعه', shopIntent:'خرید بر اساس نیاز', everyday:'طلای روزمره', gifting:'هدیه‌های سنجیده', occasion:'برای مناسبت', craft:'متریال و هنر ساخت', materials:'آشنایی با متریال ↖', materialsLink:'متریال', clientCare:'خدمات مشتریان', delivery:'ارسال بیمه‌شده', deliveryNote:'قابل رهگیری و کاملاً بیمه', returns:'بازگشت سنجیده', returnsNote:'سیاست شفاف ۳۰ روزه', care:'مراقبت مادام‌العمر', careNote:'راهنمای نظافت و تعمیر', appointments:'رزرو وقت', appointmentsNote:'حضوری یا ویدئویی', newsletter:'یادداشت‌هایی از کارگاه', email:'نشانی ایمیل', newIn:'تازه‌ها', help:'راهنما', sizeGuide:'راهنمای سایز', shippingReturns:'ارسال و بازگشت', contact:'تماس', about:'درباره ما', journal:'مجله', locale:'فارسی · پوند · بریتانیا', legal:'حریم خصوصی · قوانین · دسترس‌پذیری',
+  tokColour:'توکن‌های رنگ معنایی', tokType:'تایپوگرافی', tokFoundation:'توکن‌های پایه', tokDna:'ساختار اجزا',
+  tokSpacing:'فاصله‌گذاری', tokShape:'شکل', tokBorder:'حاشیه', tokMotion:'حرکت',
+  tokPrimary:'کنش اصلی', tokSeparator:'جداکننده بخش', tokMeta:'مشخصات محصول',
+  uiDirection:'مسیر طراحی', uiReview:'بازبینی', uiViewport:'نمایش', uiTheme:'پوسته', uiLanguage:'زبان', uiImages:'تصاویر',
+  uiVintage:'میراث آرشیو', uiModern:'آتلیه دقیق', uiHomepage:'صفحه اصلی', uiTokens:'توکن‌ها', uiSitemap:'نقشه سایت',
+  uiDesktop:'دسکتاپ', uiMobile:'موبایل', uiLight:'روشن', uiDark:'تیره',
+  siteMap:'نقشه مشترک سایت', siteMapNote:'معماری اطلاعات در هر دو مسیر طراحی یکسان است و فقط سیستم بصری تغییر می‌کند.', home:'خانه', commerce:'فروشگاه و محصول', shopAll:'همه محصولات', newBest:'تازه‌ها و پرفروش‌ها', categoryPages:'صفحات دسته‌بندی', collectionPages:'صفحات مجموعه', productDetail:'جزئیات محصول', searchResults:'نتایج جست‌وجو', wishlist:'علاقه‌مندی‌ها', checkout:'سبد و پرداخت', giftOccasion:'هدیه و مناسبت', giftGuide:'راهنمای هدیه', giftPrice:'هدیه بر اساس قیمت', giftCards:'کارت هدیه', giftPackaging:'بسته‌بندی هدیه', bridal:'عروسی و نامزدی', brandEditorial:'برند و محتوا', craftsmanship:'هنر ساخت', materialsSourcing:'متریال و منبع', sustainability:'پایداری', serviceSupport:'خدمات و پشتیبانی', careRepair:'مراقبت و تعمیر', warranty:'ضمانت', contactFaq:'تماس و سؤالات متداول', personalisation:'شخصی‌سازی', accountOrders:'حساب و سفارش‌ها'
+};
+
+const ASSET_BASE = 'assets/jewellery/';
+const ASSETS = ['Db0Aph5IKXC.jpg','Db0B7VzRHm0.jpg','Db0Bwh4RmJf.jpg','Db307nYxKVh.jpg','DbWH_z9oni6.jpg','DbWHxzDI8yK.jpg','DbWIMceI_k9.jpg','Db_GNdLInmb.jpg','Db_bq7TxrlS.jpg','DbkiVumIKMQ.jpg','Dbkksflo4Ea.jpg','DbnBovJo_AX.jpg','DbndS-FIrdP.jpg','Dbp2tokIQgS.jpg','Dbq5lILR_QQ.jpg','Dbsb1xTocRC.jpg','Dbv9k-OxGrL.jpg','DbvQhJgIt2W.jpg','DbvTfoiIeBn.jpg','DcBJ1U9I5RU.jpg','DcCNDqRxXG3.jpg','DcJkq_bIshh.jpg','DcLRnS0RIPB.jpg','DcOgIhbKuNk.jpg','DcQrIwPIlR0.jpg','DcRfe8VRNCD.jpg','DcgfihiIQro.jpg'];
+
+const SLOT_LABELS = {
+  hero:['Hero','هیرو'], cat1:['Rings category','دسته انگشتر'], cat2:['Necklaces category','دسته گردنبند'],
+  cat3:['Earrings category','دسته گوشواره'], cat4:['Bracelets category','دسته دستبند'],
+  prod1:['Product 1','محصول ۱'], prod2:['Product 2','محصول ۲'], prod3:['Product 3','محصول ۳'], prod4:['Product 4','محصول ۴'],
+  story:['Collection story','داستان مجموعه'], intent1:['Everyday gold','طلای روزمره'], intent2:['Considered gifts','هدیه‌های سنجیده'],
+  intent3:['For the occasion','برای مناسبت'], craft:['Material and craft','متریال و ساخت']
+};
+const SLOT_IDS = Object.keys(SLOT_LABELS);
+
+const SLOT_DEFAULTS = {
+  vintage: { hero:'DbndS-FIrdP.jpg', cat1:'Db0Aph5IKXC.jpg', cat2:'DbndS-FIrdP.jpg', cat3:'DbvQhJgIt2W.jpg', cat4:'Db_GNdLInmb.jpg', prod1:'Db0Aph5IKXC.jpg', prod2:'DbndS-FIrdP.jpg', prod3:'Db_GNdLInmb.jpg', prod4:'DbvQhJgIt2W.jpg', story:'Db307nYxKVh.jpg', intent1:'Db_GNdLInmb.jpg', intent2:'DbndS-FIrdP.jpg', intent3:'DcQrIwPIlR0.jpg', craft:'Db0Aph5IKXC.jpg' },
+  modern:  { hero:'DbvQhJgIt2W.jpg', cat1:'Db0Aph5IKXC.jpg', cat2:'DbndS-FIrdP.jpg', cat3:'DbvQhJgIt2W.jpg', cat4:'Db_GNdLInmb.jpg', prod1:'DcBJ1U9I5RU.jpg', prod2:'DbndS-FIrdP.jpg', prod3:'Db_GNdLInmb.jpg', prod4:'DbvQhJgIt2W.jpg', story:'DcBJ1U9I5RU.jpg', intent1:'Db0Aph5IKXC.jpg', intent2:'Db307nYxKVh.jpg', intent3:'DbvQhJgIt2W.jpg', craft:'Db0Aph5IKXC.jpg' }
+};
+
+const FOCUS_POINTS = [['0% 0%','Top left'],['50% 0%','Top centre'],['100% 0%','Top right'],['0% 50%','Middle left'],['50% 50%','Centre'],['100% 50%','Middle right'],['0% 100%','Bottom left'],['50% 100%','Bottom centre'],['100% 100%','Bottom right']];
+const STORAGE_KEY = 'jewellery-image-overrides-v1';
+
+const PICKER_COPY = {
+  en: { title:'Change image', note:'Choose from the downloaded library or upload your own.', upload:'Upload image', reset:'Reset image', crop:'Crop', fill:'Fill', fit:'Fit', focus:'Focus', library:'Downloaded library · 27 images', slotField:'Editing', done:'Done', edit:'Edit images' },
+  fa: { title:'تغییر تصویر', note:'از تصاویر موجود انتخاب کنید یا تصویر خودتان را بارگذاری کنید.', upload:'بارگذاری تصویر', reset:'بازنشانی تصویر', crop:'برش', fill:'پرکردن', fit:'جا شدن', focus:'کانون', library:'کتابخانه دانلودشده · ۲۷ تصویر', slotField:'در حال ویرایش', done:'تمام', edit:'ویرایش تصاویر' }
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      direction: 'vintage',
+      theme: 'light',
+      device: 'desktop',
+      language: 'en',
+      panel: 'home',
+      pickerOpen: false,
+      slot: 'hero',
+      overrides: this.loadOverrides()
+    };
+    this.rootRef = React.createRef();
+    this.originals = {};
+    this.openers = {};
+    SLOT_IDS.forEach((id) => { this.openers[id] = () => this.setState({ pickerOpen: true, slot: id }); });
+  }
+
+  loadOverrides() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch (_) { return {}; }
+  }
+
+  writeOverrides(next) {
+    this.setState({ overrides: next });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch (_) {}
+  }
+
+  slotKey(slot) { return this.state.direction + ':' + slot; }
+
+  slotConfig(slot) {
+    const o = this.state.overrides[this.slotKey(slot)] || {};
+    return {
+      src: o.src || (ASSET_BASE + SLOT_DEFAULTS[this.state.direction][slot]),
+      size: o.size || 'cover',
+      focus: o.focus || '50% 50%'
+    };
+  }
+
+  patchSlot(slot, patch) {
+    const key = this.slotKey(slot);
+    const next = Object.assign({}, this.state.overrides);
+    next[key] = Object.assign({}, this.slotConfig(slot), patch);
+    this.writeOverrides(next);
+  }
+
+  clearSlot(slot) {
+    const next = Object.assign({}, this.state.overrides);
+    delete next[this.slotKey(slot)];
+    this.writeOverrides(next);
+  }
+
+  handleUpload = (event) => {
+    const file = event.target.files && event.target.files[0];
+    const slot = this.state.picker;
+    if (!file || !slot) return;
+    const reader = new FileReader();
+    reader.onload = () => this.patchSlot(slot, { src: reader.result });
+    reader.readAsDataURL(file);
+    event.target.value = '';
+  };
+
+  componentDidMount() { this.sync(); }
+
+  componentDidUpdate() { this.sync(); }
+
+  device() { return this.state.device; }
+
+  patch(selector, attr, lookup) {
+    const root = this.rootRef.current;
+    if (!root) return;
+    root.querySelectorAll(selector).forEach((node) => {
+      const key = node.getAttribute(attr);
+      const cacheKey = attr + ':' + key;
+      if (!(cacheKey in this.originals)) this.originals[cacheKey] = node.textContent;
+      const next = lookup(key) || this.originals[cacheKey];
+      if (node.textContent !== next) node.textContent = next;
+    });
+  }
+
+  sync() {
+    const fa = this.state.language === 'fa';
+    const copy = DIRECTION_COPY[this.state.direction][this.state.language];
+    const system = SYSTEMS[this.state.direction];
+    this.patch('[data-i18n]', 'data-i18n', (k) => (fa ? FA[k] : null));
+    this.patch('[data-copy]', 'data-copy', (k) => copy[k]);
+    this.patch('[data-system]', 'data-system', (k) => (fa && system.fa && system.fa[k]) || system[k]);
+  }
+
+  btn(active) {
+    const p = PALETTE[this.state.direction][this.state.theme];
+    return active
+      ? { bg: p.accent, fg: p.onAccent, line: p.accent }
+      : { bg: p.surface, fg: p.text, line: p.line };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const dev = this.device();
+    const mobile = dev === 'mobile';
+    const vintage = s.direction === 'vintage';
+    const modern = !vintage;
+    const fa = s.language === 'fa';
+    const p = PALETTE[s.direction][s.theme];
+    const f = FONTS[s.direction];
+    const pagePad = mobile ? '14px' : (vintage ? '42px' : '34px');
+    const bodyActive = fa ? f.fa : f.body;
+    const displayActive = fa ? f.fa : f.display;
+    const rtlSign = fa ? -1 : 1;
+
+    const vars = {
+      '--jd-bg': p.bg,
+      '--jd-surface': p.surface,
+      '--jd-surface-raised': p.raised,
+      '--jd-text': p.text,
+      '--jd-muted': p.muted,
+      '--jd-line': p.line,
+      '--jd-accent': p.accent,
+      '--jd-on-accent': p.onAccent,
+      '--jd-detail': p.detail,
+      '--jd-image': p.image,
+      '--jd-display': f.display,
+      '--jd-fa': f.fa,
+      '--jd-body': f.body,
+      '--jd-body-active': bodyActive,
+      '--jd-display-active': displayActive,
+      '--jd-ls': fa ? '0' : (vintage ? '.12em' : '.08em'),
+      '--jd-eyebrow-ls': fa ? '0' : '.16em',
+      '--jd-tight': fa ? '0' : '-.035em',
+      '--jd-page-max': mobile ? '390px' : '1180px',
+      '--jd-page-pad': pagePad,
+      '--jd-section-space': mobile ? '52px' : (vintage ? '72px' : '84px'),
+      '--jd-media-radius': vintage ? '0px' : '18px',
+      '--jd-control-radius': vintage ? '0px' : '999px',
+      '--jd-ann-min': mobile ? '28px' : '30px',
+      '--jd-header-min': mobile ? '58px' : '76px',
+      '--jd-header-cols': mobile ? '36px 1fr 92px' : '150px 1fr 150px',
+      '--jd-header-gap': mobile ? '12px' : '18px',
+      '--jd-double-rule': vintage ? '1px solid ' + p.line : '0',
+      '--jd-menu-display': mobile ? 'block' : 'none',
+      '--jd-brand-font': fa ? f.fa : f.brand,
+      '--jd-brand-size': mobile ? (vintage ? '22px' : '15px') : (vintage ? '29px' : '20px'),
+      '--jd-brand-weight': vintage ? '400' : '500',
+      '--jd-brand-ls': fa ? '0' : (vintage ? '-.03em' : '.12em'),
+      '--jd-brand-transform': vintage ? 'none' : 'uppercase',
+      '--jd-brand-align': mobile ? 'center' : 'start',
+      '--jd-brand-justify': mobile ? 'center' : 'flex-start',
+      '--jd-brand-position': mobile ? 'absolute' : 'static',
+      '--jd-brand-left': mobile ? '50%' : 'auto',
+      '--jd-brand-shift': mobile ? 'translateX(-50%)' : 'none',
+      '--jd-brand-text-display': mobile ? 'none' : 'inline',
+      '--jd-mark-w': mobile ? '34px' : '44px',
+      '--jd-mark-h': mobile ? '34px' : '44px',
+      '--jd-mark-gap': mobile ? '0px' : '11px',
+      '--jd-nav-display': mobile ? 'none' : 'flex',
+      '--jd-nav-gap': '24px',
+      '--jd-tools-gap': mobile ? '9px' : '13px',
+      '--jd-tools-position': mobile ? 'absolute' : 'static',
+      '--jd-tools-inline-end': mobile ? pagePad : 'auto',
+      '--jd-tools-top': mobile ? '50%' : 'auto',
+      '--jd-tools-shift': mobile ? 'translateY(-50%)' : 'none',
+      '--jd-saved-display': mobile ? 'none' : 'inline',
+      '--jd-hero-min': mobile ? '0px' : (vintage ? '520px' : '570px'),
+      '--jd-hero-pad': mobile ? '14px' : (vintage ? pagePad : '18px'),
+      '--jd-hero-display': mobile ? 'flex' : 'grid',
+      '--jd-hero-cols': vintage ? '.82fr 1.18fr' : '1fr',
+      '--jd-hero-gap': mobile ? '0px' : (vintage ? '34px' : '0px'),
+      '--jd-copy-order': mobile ? '2' : '0',
+      '--jd-copy-w': modern && !mobile ? 'min(460px, 46%)' : 'auto',
+      '--jd-copy-self': modern && !mobile ? 'end' : 'auto',
+      '--jd-copy-margin': modern && !mobile ? (fa ? '0 24px 28px 0' : '0 0 28px 24px') : '0',
+      '--jd-copy-pad': mobile ? '26px 4px 18px' : (vintage ? '32px 12px 32px 10px' : '28px'),
+      '--jd-copy-bg': modern && !mobile ? 'color-mix(in srgb, ' + p.surface + ' 92%, transparent)' : 'transparent',
+      '--jd-copy-blur': modern && !mobile ? 'blur(8px)' : 'none',
+      '--jd-h1': mobile ? '54px' : 'clamp(48px, 7vw, 88px)',
+      '--jd-h1-lh': mobile ? '.92' : '.88',
+      '--jd-h2': mobile ? '44px' : 'clamp(38px, 5vw, 66px)',
+      '--jd-art-min': mobile ? '420px' : '430px',
+      '--jd-art-pos': modern && !mobile ? 'absolute' : 'relative',
+      '--jd-art-inset': modern && !mobile ? '18px' : 'auto',
+      '--jd-art-order': mobile ? '1' : '0',
+      '--jd-art-radius': mobile ? (vintage ? '0px' : '12.6px') : (vintage ? '0px' : '18px'),
+      '--jd-art-border': vintage ? '1px solid ' + p.line : '0',
+      '--jd-art-outline': vintage ? '1px solid ' + p.line : '0',
+      '--jd-portrait-rot': (rtlSign * -4) + 'deg',
+      '--jd-necklace-rot': (rtlSign * 8) + 'deg',
+      '--jd-caption-inset': modern ? 'auto 20px' : '20px auto',
+      '--jd-caption-fg': modern ? p.text : p.onAccent,
+      '--jd-caption-bg': modern ? 'color-mix(in srgb, ' + p.surface + ' 88%, transparent)' : 'color-mix(in srgb, ' + p.text + ' 78%, transparent)',
+      '--jd-caption-rule': modern ? '2px solid ' + p.detail : '0',
+      '--jd-chapter-line': vintage ? p.line : 'linear-gradient(' + (fa ? '-90deg' : '90deg') + ', ' + p.accent + ' 0 64px, ' + p.line + ' 64px)',
+      '--jd-diamond': vintage ? '"\\25C6"' : 'none',
+      '--jd-star': vintage ? '"\\2726"' : 'none',
+      '--jd-story-index': modern ? '"05 / FORM"' : 'none',
+      '--jd-cat-cols': mobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+      '--jd-cat-gap': mobile ? '11px' : '18px',
+      '--jd-cat-img-min': mobile ? '190px' : '230px',
+      '--jd-cat-img-bg': vintage ? p.raised : p.image,
+      '--jd-cat-img-border': vintage ? '1px solid ' + p.line : '0',
+      '--jd-cat-img-pad': vintage ? '10px' : '0px',
+      '--jd-cat-frame': vintage ? '1px solid ' + p.line : '0',
+      '--jd-cat-meta-pb': vintage ? '9px' : '0px',
+      '--jd-cat-meta-line': vintage ? p.line : 'transparent',
+      '--jd-cat-meta-font': vintage ? displayActive : bodyActive,
+      '--jd-cat-meta-size': vintage ? '18px' : '12px',
+      '--jd-cat-shift': modern && !mobile ? '22px' : '0px',
+      '--jd-prod-cols': mobile ? 'repeat(4, 72%)' : 'repeat(4, 1fr)',
+      '--jd-prod-gap': mobile ? '10px' : '16px',
+      '--jd-prod-overflow': mobile ? 'auto' : 'visible',
+      '--jd-prod-pb': mobile ? '10px' : '0px',
+      '--jd-prod-img-min': mobile ? '270px' : '255px',
+      '--jd-prod-img-bg': vintage ? p.surface : 'linear-gradient(145deg, ' + p.image + ', ' + p.raised + ')',
+      '--jd-prod-img-border': vintage ? '1px solid ' + p.line : '0',
+      '--jd-prod-img-shadow': vintage ? 'inset 0 0 0 10px ' + p.raised : 'none',
+      '--jd-prod-copy-rule': vintage ? '3px double ' + p.line : '0',
+      '--jd-prod-copy-mt': vintage ? '9px' : '0px',
+      '--jd-story-cols': mobile ? '1fr' : (vintage ? '1.18fr .82fr' : '.82fr 1.18fr'),
+      '--jd-story-gap': mobile ? '24px' : '38px',
+      '--jd-story-media-min': mobile ? '360px' : '390px',
+      '--jd-story-media-order': mobile ? '0' : (modern ? '2' : '0'),
+      '--jd-story-media-border': vintage ? '1px solid ' + p.line : '0',
+      '--jd-story-media-outline': vintage ? '1px solid ' + p.line : '0',
+      '--jd-intent-cols': mobile ? '1fr' : 'repeat(3, 1fr)',
+      '--jd-intent-gap': mobile ? '10px' : '15px',
+      '--jd-intent-min': mobile ? '190px' : '245px',
+      '--jd-intent-bg': vintage ? p.raised : p.image,
+      '--jd-intent-border': vintage ? '1px solid ' + p.line : '0',
+      '--jd-craft-cols': mobile ? '1fr' : '.85fr 1.15fr',
+      '--jd-craft-gap': mobile ? '24px' : '42px',
+      '--jd-craft-min': mobile ? '300px' : '340px',
+      '--jd-craft-border': vintage ? '1px solid ' + p.line : '0',
+      '--jd-svc-cols': mobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+      '--jd-svc-row-rule': mobile ? '1px solid ' + p.line : '0',
+      '--jd-svc-2-rule': mobile ? '0' : '1px solid ' + p.line,
+      '--jd-footer-pad': mobile ? '44px 14px 28px' : '52px ' + pagePad + ' 34px',
+      '--jd-footer-cols': mobile ? '1fr 1fr' : '1.2fr repeat(3, .7fr)',
+      '--jd-footer-signup-span': mobile ? '1 / -1' : 'auto',
+      '--jd-footer-bottom-dir': mobile ? 'column' : 'row',
+      '--jd-stage-pad': mobile ? '20px 14px' : '34px',
+      '--jd-swatch-cols': mobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
+      '--jd-type-cols': mobile ? '1fr' : '1fr 1fr',
+      '--jd-spec-cols': mobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+      '--jd-sample-cols': mobile ? '1fr' : 'repeat(3, 1fr)',
+      '--jd-sample-radius': modern ? '18px' : '0px',
+      '--jd-map-cols': mobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+      '--jd-map-side-rule': vintage ? '3px double ' + p.line : '0'
+    };
+
+    SLOT_IDS.forEach((id) => {
+      const c = this.slotConfig(id);
+      vars['--jd-slot-' + id] = 'url("' + c.src + '")';
+      vars['--jd-slot-' + id + '-size'] = c.size;
+      vars['--jd-slot-' + id + '-pos'] = c.focus;
+    });
+    vars['--jd-controls-display'] = this.props.showControls === false ? 'none' : 'flex';
+    vars['--jd-phase-display'] = this.props.showPhaseLabels === false ? 'none' : 'inline';
+    vars['--jd-picker-cols'] = mobile ? '1fr' : '260px 1fr';
+    vars['--jd-library-cols'] = mobile ? 'repeat(5, 1fr)' : 'repeat(14, 1fr)';
+
+    const slot = s.slot;
+    const cfg = this.slotConfig(slot);
+    const pc = PICKER_COPY[s.language];
+    const chip = (on) => on
+      ? { bg: p.accent, fg: p.onAccent, line: p.accent }
+      : { bg: p.surface, fg: p.text, line: p.line };
+    const cover = chip(cfg.size === 'cover');
+    const contain = chip(cfg.size === 'contain');
+    const bimg = this.btn(s.pickerOpen);
+
+    const bv = this.btn(vintage), bm = this.btn(modern);
+    const bh = this.btn(s.panel === 'home'), bt = this.btn(s.panel === 'tokens'), bmap = this.btn(s.panel === 'sitemap');
+    const bd = this.btn(dev === 'desktop'), bmob = this.btn(dev === 'mobile');
+    const blt = this.btn(s.theme === 'light'), bdk = this.btn(s.theme === 'dark');
+    const ben = this.btn(!fa), bfa = this.btn(fa);
+    Object.assign(vars, {
+      '--jd-btn-v-bg': bv.bg, '--jd-btn-v-fg': bv.fg, '--jd-btn-v-line': bv.line,
+      '--jd-btn-m-bg': bm.bg, '--jd-btn-m-fg': bm.fg, '--jd-btn-m-line': bm.line,
+      '--jd-btn-home-bg': bh.bg, '--jd-btn-home-fg': bh.fg, '--jd-btn-home-line': bh.line,
+      '--jd-btn-tok-bg': bt.bg, '--jd-btn-tok-fg': bt.fg, '--jd-btn-tok-line': bt.line,
+      '--jd-btn-map-bg': bmap.bg, '--jd-btn-map-fg': bmap.fg, '--jd-btn-map-line': bmap.line,
+      '--jd-btn-d-bg': bd.bg, '--jd-btn-d-fg': bd.fg, '--jd-btn-d-line': bd.line,
+      '--jd-btn-mob-bg': bmob.bg, '--jd-btn-mob-fg': bmob.fg, '--jd-btn-mob-line': bmob.line,
+      '--jd-btn-lt-bg': blt.bg, '--jd-btn-lt-fg': blt.fg, '--jd-btn-lt-line': blt.line,
+      '--jd-btn-dk-bg': bdk.bg, '--jd-btn-dk-fg': bdk.fg, '--jd-btn-dk-line': bdk.line,
+      '--jd-btn-en-bg': ben.bg, '--jd-btn-en-fg': ben.fg, '--jd-btn-en-line': ben.line,
+      '--jd-btn-fa-bg': bfa.bg, '--jd-btn-fa-fg': bfa.fg, '--jd-btn-fa-line': bfa.line,
+      '--jd-btn-img-bg': bimg.bg, '--jd-btn-img-fg': bimg.fg, '--jd-btn-img-line': bimg.line
+    });
+
+    const set = (patch) => () => this.setState(patch);
+
+    return {
+      rootRef: this.rootRef,
+      dir: fa ? 'rtl' : 'ltr',
+      lang: s.language,
+      rootStyle: Object.assign({
+        width: '100%',
+        color: p.text,
+        colorScheme: s.theme,
+        fontFamily: bodyActive
+      }, vars),
+      showHome: s.panel === 'home',
+      showTokens: s.panel === 'tokens',
+      showSitemap: s.panel === 'sitemap',
+      swatches: SWATCH_KEYS.map((key, i) => ({ name: SWATCH_NAMES[s.direction][i], value: PALETTE[s.direction][s.theme][key] })),
+      setVintage: set({ direction: 'vintage' }),
+      setModern: set({ direction: 'modern' }),
+      setHome: set({ panel: 'home' }),
+      setTokens: set({ panel: 'tokens' }),
+      setSitemap: set({ panel: 'sitemap' }),
+      setDesktop: set({ device: 'desktop' }),
+      setMobile: set({ device: 'mobile' }),
+      setLight: set({ theme: 'light' }),
+      setDark: set({ theme: 'dark' }),
+      setEn: set({ language: 'en' }),
+      setFa: set({ language: 'fa' }),
+
+      pickerOpen: s.pickerOpen,
+      activeSlot: slot,
+      slotFieldLabel: pc.slotField,
+      doneLabel: pc.done,
+      imagesButtonLabel: s.pickerOpen ? pc.done : pc.edit,
+      togglePicker: () => this.setState((st) => ({ pickerOpen: !st.pickerOpen })),
+      slotOptions: SLOT_IDS.map((id) => {
+        const on = id === slot;
+        return {
+          id,
+          label: SLOT_LABELS[id][fa ? 1 : 0],
+          bg: on ? p.accent : p.surface,
+          fg: on ? p.onAccent : p.muted,
+          line: on ? p.accent : p.line,
+          select: () => this.setState({ slot: id })
+        };
+      }),
+      previewImage: 'url("' + cfg.src + '")',
+      previewSize: cfg.size,
+      previewFocus: cfg.focus,
+      uploadLabel: pc.upload,
+      resetLabel: pc.reset,
+      cropLabel: pc.crop,
+      fillLabel: pc.fill,
+      fitLabel: pc.fit,
+      focusLabel: pc.focus,
+      libraryLabel: pc.library,
+      coverBg: cover.bg, coverFg: cover.fg, coverLine: cover.line,
+      containBg: contain.bg, containFg: contain.fg, containLine: contain.line,
+      closePicker: () => this.setState({ pickerOpen: false }),
+      resetSlot: () => this.clearSlot(slot),
+      setCover: () => this.patchSlot(slot, { size: 'cover' }),
+      setContain: () => this.patchSlot(slot, { size: 'contain' }),
+      onUpload: this.handleUpload,
+      focusOptions: FOCUS_POINTS.map(([value, label]) => ({
+        label,
+        line: cfg.focus === value ? p.accent : p.line,
+        bg: cfg.focus === value ? p.accent : p.surface,
+        select: () => this.patchSlot(slot, { focus: value })
+      })),
+      library: ASSETS.map((file) => ({
+        label: file.replace(/\.jpg$/, ''),
+        url: 'url("' + ASSET_BASE + file + '")',
+        line: cfg.src === ASSET_BASE + file ? p.accent : 'transparent',
+        select: () => this.patchSlot(slot, { src: ASSET_BASE + file })
+      })),
+      open_hero: this.openers.hero,
+      open_cat1: this.openers.cat1,
+      open_cat2: this.openers.cat2,
+      open_cat3: this.openers.cat3,
+      open_cat4: this.openers.cat4,
+      open_prod1: this.openers.prod1,
+      open_prod2: this.openers.prod2,
+      open_prod3: this.openers.prod3,
+      open_prod4: this.openers.prod4,
+      open_story: this.openers.story,
+      open_intent1: this.openers.intent1,
+      open_intent2: this.openers.intent2,
+      open_intent3: this.openers.intent3,
+      open_craft: this.openers.craft
+    };
+  }
+}
+</script>
+</body>
+</html>

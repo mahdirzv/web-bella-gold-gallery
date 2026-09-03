@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-09-02T21:26:28.104Z",
+    "input": {
+      "url": "https://www.instagram.com/gold_gallery_uk/",
+      "num_of_posts": 68,
+      "start_date": "",
+      "end_date": "",
+      "post_type": ""
+    },
+    "error": "Unable to discover older posts",
+    "error_code": "dead_page"
+  }
+]

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+html, body { margin: 0; background: #f3f1ec; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" dir="{{ dir }}" style="--wf-page:#f3f1ec;--wf-surface:#ffffff;--wf-ink:#171614;--wf-muted:#6d6961;--wf-line:#c8c3ba;--wf-fill:#e4e0d8;--wf-fs:#d2ccc2;--wf-accent:#7b6a41;color:#171614;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;width:100%;background:#f3f1ec;border:1px solid #c8c3ba;min-height:720px">
+
+  <div style="min-height:64px;padding:12px 16px;display:flex;gap:14px;justify-content:space-between;align-items:center;border-bottom:1px solid var(--wf-line);background:var(--wf-surface);position:sticky;top:0;z-index:20">
+    <div style="min-width:180px">
+      <strong data-i18n="title" style="display:block;font-size:14px;letter-spacing:.02em">Jewellery IA wireframe</strong>
+      <span data-i18n="subtitle" style="display:block;color:var(--wf-muted);font-size:11px;margin-top:2px">Structure before visual design</span>
+    </div>
+    <div role="tablist" aria-label="Wireframe views" style="display:flex;align-items:center;gap:4px">
+      <button type="button" role="tab" onClick="{{ viewDesktop }}" data-i18n="desktop" style="font:inherit;min-height:36px;padding:7px 11px;cursor:pointer;border:1px solid {{ tabDesktopBorder }};background:{{ tabDesktopBg }};color:{{ tabDesktopColor }}">Desktop home</button>
+      <button type="button" role="tab" onClick="{{ viewMobile }}" data-i18n="mobile" style="font:inherit;min-height:36px;padding:7px 11px;cursor:pointer;border:1px solid {{ tabMobileBorder }};background:{{ tabMobileBg }};color:{{ tabMobileColor }}">Mobile home</button>
+      <button type="button" role="tab" onClick="{{ viewSitemap }}" data-i18n="sitemap" style="font:inherit;min-height:36px;padding:7px 11px;cursor:pointer;border:1px solid {{ tabMapBorder }};background:{{ tabMapBg }};color:{{ tabMapColor }}">Site map</button>
+    </div>
+    <div aria-label="Language preview" style="display:flex;align-items:center;gap:4px">
+      <button type="button" onClick="{{ langEn }}" style="font:inherit;min-height:36px;padding:7px 11px;cursor:pointer;border:1px solid {{ enBorder }};background:{{ enBg }};color:{{ enColor }}">EN</button>
+      <button type="button" onClick="{{ langFa }}" style="font:inherit;min-height:36px;padding:7px 11px;cursor:pointer;border:1px solid {{ faBorder }};background:{{ faBg }};color:{{ faColor }}">فا</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ showDesktop }}" hint-placeholder-val="{{ true }}">
+  <section role="tabpanel" data-screen-label="Desktop home" style="padding:22px">
+    <div style="display:flex;justify-content:space-between;gap:20px;align-items:end;max-width:1180px;margin:0 auto 14px">
+      <h2 data-i18n="desktopTitle" style="margin:0;font-size:18px;font-weight:650">Desktop homepage: recommended order</h2>
+      <p data-i18n="desktopNote" style="margin:0;color:var(--wf-muted);font-size:12px">Editorial introduction → product discovery → proof → service</p>
+    </div>
+    <div style="max-width:1180px;margin:0 auto;background:var(--wf-surface);border:1px solid var(--wf-line)">
+      <div style="height:34px;border-bottom:1px solid var(--wf-line);display:flex;align-items:center;gap:6px;padding:0 11px">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--wf-line)"></span>
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--wf-line)"></span>
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--wf-line)"></span>
+      </div>
+      <div data-i18n="announcement" style="text-align:center;padding:8px;font-size:10px;background:var(--wf-fill);border-bottom:1px solid var(--wf-line)">Complimentary insured delivery · One message only</div>
+      <div style="min-height:66px;padding:0 22px;display:grid;grid-template-columns:150px 1fr 180px;align-items:center;border-bottom:1px solid var(--wf-line)">
+        <img src="assets/brand/bella-gold-gallery.png" alt="Bella Gold Gallery" style="height:44px;width:auto;display:block">
+        <nav style="display:flex;justify-content:center;gap:22px;font-size:11px">
+          <span data-i18n="shop">Shop</span>
+          <span data-i18n="collections">Collections</span>
+          <span data-i18n="gifts">Gifts</span>
+          <span data-i18n="story">Our story</span>
+          <span data-i18n="services">Services</span>
+        </nav>
+        <div style="display:flex;justify-content:end;gap:12px;color:var(--wf-muted);font-size:10px">
+          <span data-i18n="search">Search</span>
+          <span data-i18n="account">Account</span>
+          <span data-i18n="bag">Bag</span>
+        </div>
+      </div>
+
+      <section style="border-bottom:1px solid var(--wf-line);display:grid;grid-template-columns:.78fr 1.22fr;min-height:370px">
+        <div style="padding:54px 40px;display:flex;flex-direction:column;justify-content:center">
+          <span data-i18n="heroTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">01 · Campaign hero</span>
+          <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+          <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+          <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+          <span data-i18n="primaryCta" style="display:inline-block;width:max-content;border:1px solid var(--wf-ink);padding:10px 15px;margin-top:11px;font-size:10px;font-weight:700">Explore the collection</span>
+        </div>
+        <div data-i18n="heroMedia" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border-inline-start:1px solid var(--wf-line);min-height:370px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Art-directed hero image · focal point preserved</div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:22px">
+        <span data-i18n="categoryTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">02 · Shop by category</span>
+        <div style="display:grid;grid-template-columns:repeat(5, 1fr);gap:10px">
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:132px"></div>
+            <div data-i18n="rings" style="font-size:11px;margin-top:7px">Rings</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:132px"></div>
+            <div data-i18n="necklaces" style="font-size:11px;margin-top:7px">Necklaces</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:132px"></div>
+            <div data-i18n="earrings" style="font-size:11px;margin-top:7px">Earrings</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:132px"></div>
+            <div data-i18n="bracelets" style="font-size:11px;margin-top:7px">Bracelets</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:132px"></div>
+            <div data-i18n="newIn" style="font-size:11px;margin-top:7px">New in</div>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:22px">
+        <span data-i18n="productTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">03 · Best sellers / new arrivals</span>
+        <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:12px">
+          <div>
+            <div data-i18n="studioImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Studio image</div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:65%"></div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:38%"></div>
+          </div>
+          <div>
+            <div data-i18n="wornImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Worn image</div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:65%"></div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:38%"></div>
+          </div>
+          <div>
+            <div data-i18n="studioImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Studio image</div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:65%"></div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:38%"></div>
+          </div>
+          <div>
+            <div data-i18n="wornImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Worn image</div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:65%"></div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:38%"></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:22px">
+        <span data-i18n="collectionTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">04 · Signature collection story</span>
+        <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch">
+          <div data-i18n="editorialImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:270px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Editorial collection image</div>
+          <div style="align-self:center">
+            <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <span data-i18n="discover" style="display:inline-block;width:max-content;border:1px solid var(--wf-ink);padding:10px 15px;margin-top:11px;font-size:10px;font-weight:700">Discover the collection</span>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:22px">
+        <span data-i18n="intentTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">05 · Shop by intent</span>
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px">
+          <div data-i18n="everyday" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:130px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Everyday gold</div>
+          <div data-i18n="gifting" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:130px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Gifting</div>
+          <div data-i18n="occasion" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:130px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Occasion</div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:22px">
+        <span data-i18n="proofTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">06 · Craft and material proof</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center">
+          <div>
+            <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+          </div>
+          <div data-i18n="detailImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:110px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Material / making detail</div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:22px">
+        <span data-i18n="serviceTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">07 · Services and reassurance</span>
+        <div style="display:grid;grid-template-columns:repeat(4, 1fr);border:1px solid var(--wf-line)">
+          <div data-i18n="delivery" style="min-height:86px;padding:16px;border-inline-end:1px solid var(--wf-line);font-size:11px">Insured delivery</div>
+          <div data-i18n="returns" style="min-height:86px;padding:16px;border-inline-end:1px solid var(--wf-line);font-size:11px">Returns</div>
+          <div data-i18n="care" style="min-height:86px;padding:16px;border-inline-end:1px solid var(--wf-line);font-size:11px">Care &amp; warranty</div>
+          <div data-i18n="appointment" style="min-height:86px;padding:16px;font-size:11px">Appointments</div>
+        </div>
+      </section>
+
+      <footer style="padding:22px">
+        <span data-i18n="footerTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">08 · Newsletter and footer</span>
+        <div style="display:grid;grid-template-columns:1.4fr repeat(4, 1fr);gap:26px">
+          <div style="min-height:100px">
+            <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+          </div>
+          <div style="min-height:100px">
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+          </div>
+          <div style="min-height:100px">
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+          </div>
+          <div style="min-height:100px">
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+          </div>
+          <div style="min-height:100px">
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+            <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:38%"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showMobile }}" hint-placeholder-val="{{ false }}">
+  <section role="tabpanel" data-screen-label="Mobile home" style="padding:22px">
+    <div style="display:flex;justify-content:space-between;gap:20px;align-items:end;max-width:1180px;margin:0 auto 14px">
+      <h2 data-i18n="mobileTitle" style="margin:0;font-size:18px;font-weight:650">Mobile homepage: same hierarchy, reduced friction</h2>
+      <p data-i18n="mobileNote" style="margin:0;color:var(--wf-muted);font-size:12px">No hidden essential content · swipe rails have visible continuation</p>
+    </div>
+    <div style="width:min(390px, 100%);margin:0 auto;border:1px solid var(--wf-line);background:var(--wf-surface)">
+      <div style="height:22px;background:var(--wf-fill)"></div>
+      <div data-i18n="announcementShort" style="text-align:center;padding:8px;font-size:10px;background:var(--wf-fill);border-bottom:1px solid var(--wf-line)">Insured delivery</div>
+      <div style="min-height:54px;display:grid;grid-template-columns:44px 1fr 80px;align-items:center;padding:0 12px;border-bottom:1px solid var(--wf-line)">
+        <span>☰</span>
+        <img src="assets/brand/bella-gold-gallery.png" alt="Bella Gold Gallery" style="height:34px;width:auto;display:block;margin:0 auto">
+        <span style="font-size:11px">⌕　Bag</span>
+      </div>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="heroTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">01 · Campaign hero</span>
+        <div data-i18n="mobileHeroMedia" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:320px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Portrait mobile crop · jewellery visible</div>
+        <div style="margin-top:16px">
+          <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+          <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+          <span data-i18n="primaryCta" style="display:inline-block;width:max-content;border:1px solid var(--wf-ink);padding:10px 15px;margin-top:11px;font-size:10px;font-weight:700">Explore the collection</span>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="categoryTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">02 · Shop by category</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:145px"></div>
+            <div data-i18n="rings" style="font-size:11px;margin-top:7px">Rings</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:145px"></div>
+            <div data-i18n="necklaces" style="font-size:11px;margin-top:7px">Necklaces</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:145px"></div>
+            <div data-i18n="earrings" style="font-size:11px;margin-top:7px">Earrings</div>
+          </div>
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:145px"></div>
+            <div data-i18n="bracelets" style="font-size:11px;margin-top:7px">Bracelets</div>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="productTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">03 · Best sellers / new arrivals</span>
+        <div style="display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:10px;overflow:hidden">
+          <div>
+            <div data-i18n="studioImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Studio image</div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:65%"></div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:38%"></div>
+          </div>
+          <div>
+            <div data-i18n="wornImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Worn image</div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:65%"></div>
+            <div style="height:7px;background:var(--wf-fs);margin:8px 0 0;width:38%"></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="collectionTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">04 · Signature collection story</span>
+        <div data-i18n="editorialImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:110px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Editorial collection image</div>
+        <div style="margin-top:14px">
+          <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+          <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+          <span data-i18n="discover" style="display:inline-block;width:max-content;border:1px solid var(--wf-ink);padding:10px 15px;margin-top:11px;font-size:10px;font-weight:700">Discover the collection</span>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="intentTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">05 · Shop by intent</span>
+        <div style="display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:10px;overflow:hidden">
+          <div data-i18n="everyday" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Everyday gold</div>
+          <div data-i18n="gifting" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:190px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Gifting</div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="proofTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">06 · Craft and material proof</span>
+        <div data-i18n="detailImage" style="background:repeating-linear-gradient(135deg,var(--wf-fill),var(--wf-fill) 10px,var(--wf-surface) 10px,var(--wf-surface) 20px);border:1px solid var(--wf-line);min-height:110px;display:grid;place-items:center;padding:8px;text-align:center;color:var(--wf-muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Material / making detail</div>
+        <div style="margin-top:14px">
+          <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+          <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--wf-line);padding:16px">
+        <span data-i18n="serviceTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">07 · Services and reassurance</span>
+        <div style="display:grid;border:1px solid var(--wf-line)">
+          <div data-i18n="delivery" style="min-height:56px;padding:16px;border-bottom:1px solid var(--wf-line);font-size:11px">Insured delivery</div>
+          <div data-i18n="returns" style="min-height:56px;padding:16px;border-bottom:1px solid var(--wf-line);font-size:11px">Returns</div>
+          <div data-i18n="care" style="min-height:56px;padding:16px;border-bottom:1px solid var(--wf-line);font-size:11px">Care &amp; warranty</div>
+          <div data-i18n="appointment" style="min-height:56px;padding:16px;font-size:11px">Appointments</div>
+        </div>
+      </section>
+
+      <footer style="padding:16px">
+        <span data-i18n="footerTag" style="display:inline-block;color:var(--wf-accent);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">08 · Newsletter and footer</span>
+        <div style="height:16px;background:var(--wf-fs);margin-bottom:9px;width:88%"></div>
+        <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+        <div style="height:9px;background:var(--wf-fs);margin-bottom:9px;width:65%"></div>
+      </footer>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showSitemap }}" hint-placeholder-val="{{ false }}">
+  <section role="tabpanel" data-screen-label="Site map" style="padding:22px">
+    <div style="display:flex;justify-content:space-between;gap:20px;align-items:end;max-width:1180px;margin:0 auto 14px">
+      <h2 data-i18n="mapTitle" style="margin:0;font-size:18px;font-weight:650">Recommended site map</h2>
+      <p data-i18n="mapNote" style="margin:0;color:var(--wf-muted);font-size:12px">Launch the buying journey first; add service/editorial depth when operationally ready</p>
+    </div>
+    <div style="max-width:1180px;margin:0 auto">
+      <div data-i18n="home" style="border:1px solid var(--wf-ink);background:var(--wf-surface);width:160px;text-align:center;padding:14px;margin:0 auto 30px;font-weight:700;font-size:12px">Home</div>
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:14px">
+        <section style="border:1px solid var(--wf-line);background:var(--wf-surface);min-width:0">
+          <h3 data-i18n="commerce" style="margin:0;padding:13px;border-bottom:1px solid var(--wf-line);font-size:12px">Shop &amp; product</h3>
+          <ul style="list-style:none;padding:8px 13px 13px;margin:0;display:grid">
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="shopAll">Shop all</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="newBest">New / best sellers</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="categories">Category pages</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="collectionPages">Collection pages</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="pdp">Product detail</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="searchResults">Search results</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="wishlist">Wishlist</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;display:flex;justify-content:space-between;gap:8px"><span data-i18n="checkout">Bag / checkout</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+          </ul>
+        </section>
+        <section style="border:1px solid var(--wf-line);background:var(--wf-surface);min-width:0">
+          <h3 data-i18n="giftOccasion" style="margin:0;padding:13px;border-bottom:1px solid var(--wf-line);font-size:12px">Gifts &amp; occasion</h3>
+          <ul style="list-style:none;padding:8px 13px 13px;margin:0;display:grid">
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="giftGuide">Gift guide</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">P2</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="giftPrice">Gifts by price</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">P2</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="giftCard">Gift cards</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">P2</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="packaging">Gift packaging</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;display:flex;justify-content:space-between;gap:8px"><span data-i18n="bridal">Bridal / wedding</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">IF VALID</span></li>
+          </ul>
+        </section>
+        <section style="border:1px solid var(--wf-line);background:var(--wf-surface);min-width:0">
+          <h3 data-i18n="brandEditorial" style="margin:0;padding:13px;border-bottom:1px solid var(--wf-line);font-size:12px">Brand &amp; editorial</h3>
+          <ul style="list-style:none;padding:8px 13px 13px;margin:0;display:grid">
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="about">About</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="craftsmanship">Craftsmanship</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="materials">Materials &amp; sourcing</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="journal">Journal</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">P2</span></li>
+            <li style="font-size:11px;padding:7px 0;display:flex;justify-content:space-between;gap:8px"><span data-i18n="sustainability">Sustainability</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">IF PROVEN</span></li>
+          </ul>
+        </section>
+        <section style="border:1px solid var(--wf-line);background:var(--wf-surface);min-width:0">
+          <h3 data-i18n="serviceSupport" style="margin:0;padding:13px;border-bottom:1px solid var(--wf-line);font-size:12px">Service &amp; support</h3>
+          <ul style="list-style:none;padding:8px 13px 13px;margin:0;display:grid">
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="sizeGuide">Size guide</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="careRepair">Care &amp; repair</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="shippingReturns">Delivery &amp; returns</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="warranty">Warranty</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="contactFaq">Contact / FAQ</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="appointments">Appointments</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">P2</span></li>
+            <li style="font-size:11px;padding:7px 0;border-bottom:1px solid var(--wf-fill);display:flex;justify-content:space-between;gap:8px"><span data-i18n="personalisation">Personalisation</span><span data-phase style="color:var(--wf-muted);font-size:9px;white-space:nowrap">P2</span></li>
+            <li style="font-size:11px;padding:7px 0;display:flex;justify-content:space-between;gap:8px"><span data-i18n="accountOrders">Account / orders</span><span data-phase style="color:var(--wf-accent);font-size:9px;font-weight:750;white-space:nowrap">MVP</span></li>
+          </ul>
+        </section>
+      </div>
+      <div style="display:flex;gap:18px;justify-content:center;margin-top:18px;color:var(--wf-muted);font-size:10px">
+        <span><strong>MVP</strong> · launch requirement</span>
+        <span><strong>P2</strong> · operational expansion</span>
+        <span><strong>IF VALID</strong> · only with a real offer</span>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;,&quot;sitemap&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Wireframe&quot;},&quot;startLanguage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fa&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Wireframe&quot;},&quot;showPhaseLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Wireframe&quot;}}">
+const FA = {
+  title: 'وایرفریم معماری فروشگاه جواهرات', subtitle: 'ساختار پیش از طراحی بصری', desktop: 'خانه دسکتاپ', mobile: 'خانه موبایل', sitemap: 'نقشه سایت',
+  desktopTitle: 'صفحه اصلی دسکتاپ: ترتیب پیشنهادی', desktopNote: 'معرفی سردبیری ← کشف محصول ← اعتبار ← خدمات', mobileTitle: 'صفحه اصلی موبایل: همان سلسله‌مراتب با اصطکاک کمتر', mobileNote: 'محتوای ضروری پنهان نمی‌شود · ادامه اسلایدر مشخص است',
+  announcement: 'ارسال بیمه‌شده رایگان · فقط یک پیام', announcementShort: 'ارسال بیمه‌شده', shop: 'فروشگاه', collections: 'مجموعه‌ها', gifts: 'هدایا', story: 'داستان ما', services: 'خدمات', search: 'جست‌وجو', account: 'حساب', bag: 'سبد',
+  heroTag: '۰۱ · هیروی کمپین', primaryCta: 'مشاهده مجموعه', heroMedia: 'تصویر هیروی هدایت‌شده · نقطه کانونی حفظ شود', mobileHeroMedia: 'برش عمودی موبایل · جواهر واضح باشد',
+  categoryTag: '۰۲ · خرید بر اساس دسته', rings: 'انگشتر', necklaces: 'گردنبند', earrings: 'گوشواره', bracelets: 'دستبند', newIn: 'تازه‌ها',
+  productTag: '۰۳ · پرفروش‌ها / تازه‌ها', studioImage: 'تصویر استودیویی', wornImage: 'تصویر روی بدن', collectionTag: '۰۴ · داستان مجموعه شاخص', editorialImage: 'تصویر سردبیری مجموعه', discover: 'کشف مجموعه',
+  intentTag: '۰۵ · خرید بر اساس نیاز', everyday: 'طلای روزمره', gifting: 'هدیه', occasion: 'مناسبت', proofTag: '۰۶ · اعتبار ساخت و متریال', detailImage: 'جزئیات متریال / ساخت',
+  serviceTag: '۰۷ · خدمات و اطمینان', delivery: 'ارسال بیمه‌شده', returns: 'بازگشت کالا', care: 'مراقبت و ضمانت', appointment: 'رزرو وقت', footerTag: '۰۸ · خبرنامه و فوتر',
+  mapTitle: 'نقشه پیشنهادی سایت', mapNote: 'ابتدا مسیر خرید؛ سپس توسعه خدمات و محتوای سردبیری', home: 'خانه', commerce: 'فروشگاه و محصول', shopAll: 'همه محصولات', newBest: 'تازه‌ها / پرفروش‌ها', categories: 'صفحات دسته‌بندی', collectionPages: 'صفحات مجموعه', pdp: 'جزئیات محصول', searchResults: 'نتایج جست‌وجو', wishlist: 'علاقه‌مندی‌ها', checkout: 'سبد / پرداخت',
+  giftOccasion: 'هدیه و مناسبت', giftGuide: 'راهنمای هدیه', giftPrice: 'هدیه بر اساس قیمت', giftCard: 'کارت هدیه', packaging: 'بسته‌بندی هدیه', bridal: 'عروسی / نامزدی', brandEditorial: 'برند و محتوا', about: 'درباره ما', craftsmanship: 'هنر ساخت', materials: 'متریال و منبع', journal: 'مجله', sustainability: 'پایداری', serviceSupport: 'خدمات و پشتیبانی', sizeGuide: 'راهنمای سایز', careRepair: 'مراقبت و تعمیر', shippingReturns: 'ارسال و بازگشت', warranty: 'ضمانت', contactFaq: 'تماس / سوالات', appointments: 'رزرو وقت', personalisation: 'شخصی‌سازی', accountOrders: 'حساب / سفارش‌ها'
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: props.startView || 'desktop', lang: props.startLanguage || 'en' };
+    this.rootRef = React.createRef();
+    this.originals = {};
+  }
+
+  componentDidMount() { this.sync(); }
+  componentDidUpdate() { this.sync(); }
+
+  sync() {
+    const root = this.rootRef.current;
+    if (!root) return;
+    const fa = this.state.lang === 'fa';
+    root.querySelectorAll('[data-i18n]').forEach((node) => {
+      const key = node.dataset.i18n;
+      if (!(key in this.originals)) this.originals[key] = node.textContent;
+      const next = fa ? (FA[key] || this.originals[key]) : this.originals[key];
+      if (node.textContent !== next) node.textContent = next;
+    });
+    const showPhase = this.props.showPhaseLabels !== false;
+    root.querySelectorAll('[data-phase]').forEach((node) => {
+      node.style.display = showPhase ? '' : 'none';
+    });
+  }
+
+  tab(name) {
+    const on = this.state.view === name;
+    return {
+      bg: on ? '#e4e0d8' : 'transparent',
+      color: on ? '#171614' : '#6d6961',
+      border: on ? '#c8c3ba' : 'transparent'
+    };
+  }
+
+  renderVals() {
+    const d = this.tab('desktop'), m = this.tab('mobile'), s = this.tab('sitemap');
+    const en = this.state.lang === 'en';
+    return {
+      rootRef: this.rootRef,
+      dir: this.state.lang === 'fa' ? 'rtl' : 'ltr',
+      showDesktop: this.state.view === 'desktop',
+      showMobile: this.state.view === 'mobile',
+      showSitemap: this.state.view === 'sitemap',
+      viewDesktop: () => this.setState({ view: 'desktop' }),
+      viewMobile: () => this.setState({ view: 'mobile' }),
+      viewSitemap: () => this.setState({ view: 'sitemap' }),
+      langEn: () => this.setState({ lang: 'en' }),
+      langFa: () => this.setState({ lang: 'fa' }),
+      tabDesktopBg: d.bg, tabDesktopColor: d.color, tabDesktopBorder: d.border,
+      tabMobileBg: m.bg, tabMobileColor: m.color, tabMobileBorder: m.border,
+      tabMapBg: s.bg, tabMapColor: s.color, tabMapBorder: s.border,
+      enBg: en ? '#e4e0d8' : 'transparent', enColor: en ? '#171614' : '#6d6961', enBorder: en ? '#c8c3ba' : 'transparent',
+      faBg: en ? 'transparent' : '#e4e0d8', faColor: en ? '#6d6961' : '#171614', faBorder: en ? 'transparent' : '#c8c3ba'
+    };
+  }
+}
+</script>
+</body>
+</html>

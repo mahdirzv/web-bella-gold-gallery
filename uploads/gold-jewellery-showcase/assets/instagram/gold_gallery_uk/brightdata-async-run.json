@@ -1,0 +1,13 @@
+{
+  "account": "gold_gallery_uk",
+  "profileUrl": "https://www.instagram.com/gold_gallery_uk/",
+  "startedAt": "2026-09-03T08:34:50.808Z",
+  "jobs": [
+    {
+      "name": "posts-legacy-retry",
+      "datasetId": "gd_l1vikfch901nx3by4",
+      "status": "trigger_failed",
+      "error": "400 Bad Request: Incorrect discovery collector id Available types: user_name"
+    }
+  ]
+}
